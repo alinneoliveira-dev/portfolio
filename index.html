@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfólio de Alinne Oliveira — Desenvolvedora Full Stack">
+    <meta name="author" content="Alinne Oliveira">
+    <title>Alinne Oliveira</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="scroll-progress" id="scrollProgress"></div>
+    <canvas id="particlesCanvas"></canvas>
+    <header class="navbar" id="navbar">
+        <a href="#home" class="logo">
+            ALINNE<span>.DEV</span>
+        </a>
+
+        <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <nav class="nav-links" id="navLinks">
+            <a href="#about">SOBRE</a>
+            <a href="#projects">PROJETOS</a>
+            <a href="#stack">STACK</a>
+            <!--<a href="#journey">JORNADA</a>-->
+            <a href="#contact">CONTATO</a>
+        </nav>
+
+        <div class="nav-actions">
+            <button id="themeToggle" class="circle-button" aria-label="Alternar tema">
+                ◐
+            </button>
+
+           <!--- <span class="availability">
+                <span class="status-dot"></span>
+                OPEN TO WORK
+            </span> -->
+        </div>
+    </header>
+
+    <main>
+        <section class="hero" id="home">
+            <div class="hero-content">
+                <div class="eyebrow">
+                    FULL STACK • DADOS • IA
+                </div>
+                <h1 class="hero-title">DESENVOLVEDORA<br>FULL STACK</h1>
+
+                <p class="hero-description">
+                    Desenvolvo aplicações, APIs e soluções orientadas
+                    a dados, unindo desenvolvimento web, automação,
+                    banco de dados e curiosidade por tecnologia.
+                </p>
+
+                <div class="hero-buttons">
+                    <a href="#projects" class="button primary">
+                        VER PROJETOS 
+                    </a>
+
+                    <a href="#contact" class="button secondary">
+                        ENTRAR EM CONTATO
+                    </a>
+                </div>
+            </div>
+
+            <div class="hero-visual">
+                <div class="visual-shapes">
+                    <div class="shape circle-main"></div>
+                    <div class="shape circle-secondary"></div>
+                    <div class="shape ring"></div>
+                    <div class="shape square"></div>
+                    <div class="shape dot dot-one"></div>
+                    <div class="shape dot dot-two"></div>
+                    <div class="shape dot dot-three"></div>
+                </div>
+
+                <div class="image-container">
+                    <img src="assets/eu.png" alt="euzin" class="profile-image">
+                </div>
+            </div>
+        </section>
+        <section class="section about" id="about">
+            <div class="section-inner">
+                <div class="section-label">
+                    <span>/* um pouco sobre mim */</span>
+                </div>
+                <h2>
+                    QUEM ESTÁ POR TRÁS
+                    <br>
+                    DO CÓDIGO.
+                </h2>
+
+                <div class="about-grid reveal">
+                    <div class="about-text">
+                        <p>
+                            Sou <strong>Alinne</strong>, desenvolvedora
+                            em formação e apaixonada por transformar
+                            ideias em aplicações que realmente funcionam.
+                        </p>
+
+                        <p>
+                            Atualmente atuando como <span class="highlight">desenvolvedora full stack jr</span>
+                            na ServCredi, onde encaro o ciclo completo: do desenvolvimento e manutenção de sistemas web 
+                            até a otimização de consultas e rotinas.
+                        </p>
+
+                       <p>
+                             Além do código, <span class="highlight">orquestro fluxos de dados e automações</span>, 
+                            conectando pontas e transformando informações brutas em inteligência para os bastidores dos negócios.
+                        </p>
+
+                        <p>
+                            Movida a <span class="highlight">café,</span> boa música nos fones e uma curiosidade sem fim para transformar lógica em solução.
+                        </p>
+
+                        <div class="tag-container">
+                            <span>Python</span>
+                            <span>C#</span>
+                            <span>SQL</span>
+                            <span>Power BI</span>
+                            <span>Azure</span>
+                        </div>
+                    </div>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <span class="stat-key">years_studying</span>
+                            <strong>1+</strong>
+                            <small>ANOS EM TECNOLOGIA</small>
+                        </div>
+
+                        <div class="stat-card">
+                            <span class="stat-key">projects_built</span>
+                            <strong>3+</strong>
+                            <small>PROJETOS PRÓPRIOS</small>
+                        </div>
+
+                        <div class="stat-card">
+                            <span class="stat-key">tech_stack</span>
+                            <strong>10+</strong>
+                            <small>TECNOLOGIAS</small>
+                        </div>
+
+                        <div class="stat-card">
+                            <span class="stat-key">bugs_fixed</span>
+                            <strong>∞</strong>
+                            <small>CAFÉZINHO</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="section projects" id="projects">
+            <div class="section-inner">
+                <div class="section-label">
+                    <span>/* meus projetos */</span>
+                </div>
+                <h2>
+                    LAB DE PROJETOS:
+                    <br>
+                    <span>BACK END & DADOS.</span>
+                </h2>
+
+                <p class="section-description">
+                    Projetos desenvolvidos para praticar conceitos
+                    reais de desenvolvimento, dados, automação
+                    e construção de sistemas.
+                </p>
+
+                <div class="filter-container">
+                    <button class="filter active" data-filter="all">TODOS</button>
+                    <button class="filter" data-filter="fullstack">FULL STACK</button>
+                    <button class="filter" data-filter="data">DATA</button>
+                    <!--<button class="filter" data-filter="automation">AUTOMAÇÃO</button>-->
+                    <!--<button class="filter" data-filter="web">WEB</button>-->
+                </div>
+
+                <div class="projects-grid">
+                    <article class="project-card" data-category="fullstack data">
+                        <div class="project-header">
+                            <span class="project-number">01</span>
+                            <span class="project-type">FULL STACK</span>
+                        </div>
+                        <h3>FINANCE MANAGER</h3>
+                        <div class="project-tech">
+                            Python · Flask · MySQL · Power BI
+                        </div>
+                        <p>
+                            Sistema de gerenciamento financeiro com
+                            controle de transações, categorias,
+                            limites mensais e visualização de dados e
+                             bot no Telegram para lançamento rápido.
+                            A aplicação também conta com uma pipeline
+                            de ETL para tratamento e organização dos dados.
+                        </p>
+                        <div class="project-footer">
+                            <a href="https://github.com/alinneoliveira-dev/finance-manager" target="_blank" rel="noopener noreferrer">GITHUB ↗</a>
+                            <span>FLASK</span>
+                        </div>
+                    </article>
+
+                    <article class="project-card" data-category="fullstack">
+                        <div class="project-header">
+                            <span class="project-number">02</span>
+                            <span class="project-type">API</span>
+                        </div>
+                        <h3>PORTFOLIO</h3>
+
+                        <div class="project-tech">
+                            HTML · CSS · Javascript
+                        </div>
+
+                        <p>
+                            Portfólio criado para centralizar e comprovar meus projetos e conhecimentos em desenvolvimento backend, automação e banco de dados.
+                        </p>
+
+                        <div class="project-footer">
+                            <a href="#" target="_blank">GITHUB ↗</a>
+                            <span>REST API</span>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- STACK -->
+        <section class="section stack" id="stack">
+            <div class="section-inner">
+                <div class="section-label">
+                    <span>/* ferramentas */</span>
+                    <span>stack atual</span>
+                </div>
+
+                <h2>
+                    TECNOLOGIAS QUE
+                    <br>
+                    FAZEM PARTE DO
+                    <span>MEU CÓDIGO.</span>
+                </h2>
+
+                <p class="section-description">
+                    Tecnologias que venho utilizando em projetos,
+                    estudos e experiências práticas.
+                </p>
+
+                <div class="stack-list">
+                    <div class="stack-item">
+                        <span class="stack-index">01</span>
+                        <span class="stack-name">PYTHON</span>
+                        <span class="stack-area">BACK-END / DATA</span>
+                    </div>
+
+                    <div class="stack-item">
+                        <span class="stack-index">02</span>
+                        <span class="stack-name">C#</span>
+                        <span class="stack-area">BACK-END</span>
+                    </div>
+
+                    <div class="stack-item">
+                        <span class="stack-index">03</span>
+                        <span class="stack-name">JAVASCRIPT</span>
+                        <span class="stack-area">FRONT-END</span>
+                    </div>
+
+                    <div class="stack-item">
+                        <span class="stack-index">04</span>
+                        <span class="stack-name">FLASK</span>
+                        <span class="stack-area">WEB / API</span>
+                    </div>
+
+                    <div class="stack-item">
+                        <span class="stack-index">05</span>
+                        <span class="stack-name">SQL SERVER</span>
+                        <span class="stack-area">DATABASE</span>
+                    </div>
+
+                    <div class="stack-item">
+                        <span class="stack-index">06</span>
+                        <span class="stack-name">MYSQL</span>
+                        <span class="stack-area">DATABASE</span>
+                    </div>
+
+                    <div class="stack-item">
+                        <span class="stack-index">07</span>
+                        <span class="stack-name">DOCKER</span>
+                        <span class="stack-area">INFRA</span>
+                    </div>
+
+                    <div class="stack-item">
+                        <span class="stack-index">08</span>
+                        <span class="stack-name">POWER BI</span>
+                        <span class="stack-area">DATA / BI</span>
+                    </div>
+
+                    <div class="stack-item">
+                        <span class="stack-index">09</span>
+                        <span class="stack-name">AZURE</span>
+                        <span class="stack-area">CLOUD</span>
+                    </div>
+
+                    <div class="stack-item">
+                        <span class="stack-index">10</span>
+                        <span class="stack-name">GIT / GITHUB</span>
+                        <span class="stack-area">VERSION CONTROL</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+  
+
+        <!-- CURRÍCULO -->
+        <section class="cv-section" id="cv">
+            <div class="cv-inner">
+                <div>
+                    <span class="eyebrow">/* próxima etapa */</span>
+
+                    <h2>
+                        QUER SABER MAIS
+                        <br>
+                        SOBRE <span>MIM?</span>
+                    </h2>
+                </div>
+
+                <a href="assets/curriculo.pdf" target="_blank" class="button dark-button">
+                    &gt;_ ABRIR CURRÍCULO
+                </a>
+            </div>
+        </section>
+
+        <!-- CONTATO -->
+        <section class="section contact" id="contact">
+            <div class="section-inner">
+                <div class="section-label">
+                    <span>/* contato */</span>
+                    <span>vamos conversar</span>
+                </div>
+
+                <h2>
+                    VAMOS CONSTRUIR
+                    <br>
+                    ALGUMA COISA
+                    <span>JUNTOS?</span>
+                </h2>
+
+                <p class="section-description">
+                    Tem uma oportunidade, projeto ou simplesmente
+                    quer conversar sobre tecnologia?
+                    Entre em contato comigo.
+                </p>
+
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <a href="mailto:alinnesoliveira13@gmail.com" class="contact-email">
+                            alinnesoliveira13@gmail.com
+                        </a>
+                        <div class="social-links">
+                           <a href="https://github.com/alinneoliveira-dev" target="_blank">GITHUB ↗</a>
+                           <a href="https://www.linkedin.com/in/alinne-oliveira" target="_blank">LINKEDIN ↗</a>
+                        </div>
+                      </div>
+
+                    <form class="contact-form" id="contactForm">
+                        <div class="input-group">
+                            <label for="name">NOME</label>
+                            <input type="text" id="name" placeholder="Alinne Oliveira" required>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="email">EMAIL</label>
+                            <input type="email" id="email" placeholder="alinnesoliveira13@gmail.com" required>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="message">MENSAGEM</label>
+                            <textarea id="message" rows="5" placeholder="Digite sua mensagem..." required></textarea>
+                        </div>
+
+                        <button type="submit" class="button primary">
+                            ENVIAR MENSAGEM →
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div>ALINNE.DEV</div>
+
+        <div>
+            DESENVOLVENDO IDEIAS,
+            UMA LINHA DE CÓDIGO POR VEZ.
+        </div>
+
+        <button id="backTop">
+            &gt;_
+        </button>
+    </footer>
+
+    <!-- JAVASCRIPT -->
+    <script src="script.js"></script>
+</body>
+</html>
