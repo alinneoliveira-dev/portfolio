@@ -9,7 +9,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='assets/favicon.png') }}">   
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
 
@@ -38,11 +39,6 @@
             <button id="themeToggle" class="circle-button" aria-label="Alternar tema">
                 ◐
             </button>
-
-           <!--- <span class="availability">
-                <span class="status-dot"></span>
-                OPEN TO WORK
-            </span> -->
         </div>
     </header>
 
@@ -83,7 +79,7 @@
                 </div>
 
                 <div class="image-container">
-                    <img src="assets/eu.png" alt="euzin" class="profile-image">
+                    <img src="{{ url_for('static', filename='assets/eu.png') }}" alt="euzin" class="profile-image">
                 </div>
             </div>
         </section>
@@ -132,7 +128,7 @@
                     <div class="stats-grid">
                         <div class="stat-card">
                             <span class="stat-key">years_studying</span>
-                            <strong>1+</strong>
+                            <strong>2+</strong>
                             <small>ANOS EM TECNOLOGIA</small>
                         </div>
 
@@ -178,19 +174,19 @@
                     <button class="filter active" data-filter="all">TODOS</button>
                     <button class="filter" data-filter="fullstack">FULL STACK</button>
                     <button class="filter" data-filter="data">DATA</button>
-                    <!--<button class="filter" data-filter="automation">AUTOMAÇÃO</button>-->
+                    <button class="filter" data-filter="automation">AUTOMAÇÃO</button>
                     <!--<button class="filter" data-filter="web">WEB</button>-->
                 </div>
 
                 <div class="projects-grid">
-                    <article class="project-card" data-category="fullstack data">
+                        <article class="project-card" data-category="fullstack data" style="--project-image: url('assets/finance.png');">
                         <div class="project-header">
                             <span class="project-number">01</span>
                             <span class="project-type">FULL STACK</span>
                         </div>
                         <h3>FINANCE MANAGER</h3>
                         <div class="project-tech">
-                            Python · Flask · MySQL · Power BI
+                            PYTHON · FLASK · MYSQL · POWER BI
                         </div>
                         <p>
                             Sistema de gerenciamento financeiro com
@@ -206,15 +202,15 @@
                         </div>
                     </article>
 
-                    <article class="project-card" data-category="fullstack">
+                    <article class="project-card" data-category="fullstack" style="--project-image: url('assets/portfolio_img.png');">
                         <div class="project-header">
                             <span class="project-number">02</span>
-                            <span class="project-type">API</span>
+                            <span class="project-type">FULLSTACK</span>
                         </div>
                         <h3>PORTFOLIO</h3>
 
                         <div class="project-tech">
-                            HTML · CSS · Javascript
+                            HTML · CSS · JAVASCRIPT · PYTHON · API
                         </div>
 
                         <p>
@@ -222,8 +218,29 @@
                         </p>
 
                         <div class="project-footer">
-                            <a href="#" target="_blank">GITHUB ↗</a>
-                            <span>REST API</span>
+                            <a href="https://github.com/alinneoliveira-dev/portfolio" target="_blank" rel="noopener noreferrer">GITHUB ↗</a>
+                            <span>FLASK</span>
+                        </div>
+                    </article>
+
+                    <article class="project-card" data-category="automation">
+                        <div class="project-header">
+                            <span class="project-number">03</span>
+                            <span class="project-type">AUTOMAÇÃO</span>
+                        </div>
+                        <h3>PILL ALARM (Em desenvolvimento)</h3>
+
+                        <div class="project-tech">
+                            PYTHON · POSTGRESQL · N8N · API 
+                        </div>
+
+                        <p>
+                            O Pill Alarm é um assistente pessoal de saúde automatizado. Ele rastreia horários de medicamentos usando um banco de dados PostgreSQL, dispara alertas programados via n8n e interage com os usuários em tempo real pelo WhatsApp, impulsionado por um backend em Python.
+                        </p>
+
+                        <div class="project-footer">
+                            <a href="https://github.com/alinneoliveira-dev/pill-alarm" target="_blank" rel="noopener noreferrer">GITHUB ↗</a>
+                            <span>N8N</span>
                         </div>
                     </article>
 
@@ -336,7 +353,6 @@
             </div>
         </section>
 
-        <!-- CONTATO -->
         <section class="section contact" id="contact">
             <div class="section-inner">
                 <div class="section-label">
@@ -345,10 +361,7 @@
                 </div>
 
                 <h2>
-                    VAMOS CONSTRUIR
-                    <br>
-                    ALGUMA COISA
-                    <span>JUNTOS?</span>
+                    <span>VAMOS CONVERSAR?</span>
                 </h2>
 
                 <p class="section-description">
@@ -359,24 +372,23 @@
 
                 <div class="contact-grid">
                     <div class="contact-info">
-                        <a href="mailto:alinnesoliveira13@gmail.com" class="contact-email">
-                            alinnesoliveira13@gmail.com
-                        </a>
                         <div class="social-links">
-                           <a href="https://github.com/alinneoliveira-dev" target="_blank">GITHUB ↗</a>
-                           <a href="https://www.linkedin.com/in/alinne-oliveira" target="_blank">LINKEDIN ↗</a>
+                            <a href="mailto:alinnesoliveira13@gmail.com" class="contact-email">
+                            alinnesoliveira13@gmail.com </a>
+                           <a href="https://github.com/alinneoliveira-dev" target="_blank">https://github.com/alinneoliveira-dev</a>
+                           <a href="https://www.linkedin.com/in/alinne-oliveira" target="_blank">https://www.linkedin.com/in/alinne-oliveira</a>
                         </div>
                       </div>
 
                     <form class="contact-form" id="contactForm">
                         <div class="input-group">
                             <label for="name">NOME</label>
-                            <input type="text" id="name" placeholder="Alinne Oliveira" required>
+                            <input type="text" id="name" placeholder="" required>
                         </div>
 
                         <div class="input-group">
                             <label for="email">EMAIL</label>
-                            <input type="email" id="email" placeholder="alinnesoliveira13@gmail.com" required>
+                            <input type="email" id="email" placeholder="" required>
                         </div>
 
                         <div class="input-group">
@@ -394,21 +406,31 @@
 
     </main>
 
-    <!-- FOOTER -->
+    <div id="systemModal" class="system-modal">
+    <div class="system-modal-box">
+        <div class="system-modal-icon">✓</div>
+
+        <h3 id="systemModalTitle">Mensagem enviada!</h3>
+
+        <p id="systemModalMessage">
+            Obrigada pelo contato. Em breve entrarei em contato com você.
+        </p>
+
+        <button id="systemModalClose" type="button">
+            FECHAR
+        </button>
+    </div>
+</div>
+
     <footer>
         <div>ALINNE.DEV</div>
 
-        <div>
-            DESENVOLVENDO IDEIAS,
-            UMA LINHA DE CÓDIGO POR VEZ.
-        </div>
 
         <button id="backTop">
             &gt;_
         </button>
     </footer>
 
-    <!-- JAVASCRIPT -->
-    <script src="script.js"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>

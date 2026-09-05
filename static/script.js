@@ -58,9 +58,9 @@ const navbar = document.getElementById("navbar");
 
 window.addEventListener("scroll", () => {
     if (window.scrollY > 30) {
-        navbar.style.background = "rgba(11, 9, 18, .92)";
+        navbar.classList.add("scrolled");
     } else {
-        navbar.style.background = "rgba(11, 9, 18, .72)";
+        navbar.classList.remove("scrolled");
     }
 });
 
@@ -126,27 +126,88 @@ backTop.addEventListener("click", () => {
     });
 });
 
+/* modal do sistema */
+
+const systemModal = document.getElementById("systemModal");
+const systemModalTitle = document.getElementById("systemModalTitle");
+const systemModalMessage = document.getElementById("systemModalMessage");
+const systemModalClose = document.getElementById("systemModalClose");
+
+function openSystemModal(title, message) {
+    systemModalTitle.textContent = title;
+    systemModalMessage.textContent = message;
+
+    systemModal.classList.add("active");
+}
+
+function closeSystemModal() {
+    systemModal.classList.remove("active");
+}
+
+systemModalClose.addEventListener("click", closeSystemModal);
+
+systemModal.addEventListener("click", event => {
+    if (event.target === systemModal) {
+        closeSystemModal();
+    }
+});
+
 /* forms */
 
 const contactForm = document.getElementById("contactForm");
 
-contactForm.addEventListener("submit", event => {
+contactForm.addEventListener("submit", async event => {
     event.preventDefault();
 
-    const name = document.getElementById("name").value;
-    const email = document.getElementById("email").value;
-    const message = document.getElementById("message").value;
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const message = document.getElementById("message").value.trim();
 
-    const subject = encodeURIComponent(
-        `Contato pelo portfólio - ${name}`
-    );
+    if (!name || !email || !message) {
+        openSystemModal(
+            "Campos obrigatórios",
+            "Preencha todos os campos antes de enviar sua mensagem."
+        );
+        return;
+    }
 
-    const body = encodeURIComponent(
-        `Nome: ${name}\n\nEmail: ${email}\n\nMensagem:\n${message}`
-    );
+    try {
+        const response = await fetch("/api/contact", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                name: name,
+                email: email,
+                message: message
+            })
+        });
 
-    window.location.href =
-        `mailto:seuemail@email.com?subject=${subject}&body=${body}`;
+        const data = await response.json();
+
+        if (data.success) {
+            openSystemModal(
+                "Mensagem enviada!",
+                "Obrigada pelo contato. Recebi sua mensagem e em breve entrarei em contato com você."
+            );
+
+            contactForm.reset();
+        } else {
+            openSystemModal(
+                "Não foi possível enviar",
+                data.message
+            );
+        }
+
+    } catch (error) {
+        console.error("Erro:", error);
+
+        openSystemModal(
+            "Algo deu errado",
+            "Não foi possível enviar sua mensagem. Tente novamente em alguns instantes."
+        );
+    }
 });
 
 /* particulas */

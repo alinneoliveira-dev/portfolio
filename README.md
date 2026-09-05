@@ -1,8 +1,27 @@
-# Portfólio
+# Portfólio 
 
-Bem-vindo ao meu portfólio! Criei este espaço para centralizar meus projetos, habilidades e soluções. Dá uma olhada por aqui e vamos conversar!
-## Contato
+Portfólio pessoal desenvolvido para apresentar meus projetos, habilidades e experiências como desenvolvedora Full Stack.
 
-* **E-mail:** [alinnesoliveira13@gmail.com](mailto:alinnesoliveira13@gmail.com)
-* **LinkedIn:** [Alinne Oliveira](https://www.linkedin.com/in/alinne-oliveira/)
----
+O projeto começou como uma aplicação front-end utilizando HTML, CSS e JavaScript e posteriormente recebeu um backend em Python com Flask, responsável pelo processamento do formulário de contato e integração com a API do Resend para envio de e-mails.
+
+## Estrutura do projeto
+
+```text
+portfolio/
+│
+├── backend/
+│   ├── .env
+│   ├── app.py
+│   ├── requirements.txt
+│   └── venv/
+│
+├── static/
+│   ├── assets/
+│   ├── script.js
+│   └── style.css
+│
+├── templates/
+│   └── index.html
+│
+├── .gitignore
+└── README.md

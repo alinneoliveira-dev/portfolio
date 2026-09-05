@@ -94,9 +94,19 @@ textarea {
     justify-content: space-between;
     gap: 30px;
     padding: 20px 42px;
-    background: rgba(11, 9, 18, .72);
+    background: rgba(248, 246, 252, .75);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border);
+    transition: background .3s ease, border-color .3s ease;
+}
+.navbar.scrolled {
+    background: rgba(248, 246, 252, .94);
+}
+body.dark .navbar {
+    background: rgba(11, 9, 18, .72);
+}
+body.dark .navbar.scrolled {
+    background: rgba(11, 9, 18, .94);
 }
 
 .logo {
@@ -121,8 +131,11 @@ textarea {
     font-size: 18px;
     font-weight: 700;
     letter-spacing: 1.5px;
-    color: var(--text-secondary);
+    color: #241d30;
     transition: var(--transition);
+}
+body.dark .nav-links a {
+    color: var(--text-secondary);
 }
 
 .nav-links a:hover {
@@ -554,6 +567,9 @@ textarea {
 }
 
 .project-card {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
     padding: 35px;
     min-height: 350px;
     border: 1px solid rgba(16, 8, 24, .6);
@@ -562,9 +578,56 @@ textarea {
     transition: .3s ease;
 }
 
+.project-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: var(--project-image);
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transform: scale(1.03);
+    transition: opacity .35s ease, transform .35s ease;
+    z-index: -2;
+}
+
+.project-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(11, 9, 18, .68);
+    opacity: 0;
+    transition: opacity .35s ease;
+    z-index: -1;
+}
+
 .project-card:hover {
-    background: rgba(255,255,255,.08);
+    background: transparent;
+    color: #f4f0ff;
+    border-color: rgba(244,240,255,.5);
     transform: translateY(-4px);
+}
+
+.project-card:hover::before {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.project-card:hover::after {
+    opacity: 1;
+}
+
+.project-card:hover h3,
+.project-card:hover .project-number,
+.project-card:hover .project-tech,
+.project-card:hover p,
+.project-card:hover .project-footer {
+    color: #f4f0ff;
+}
+
+.project-card:hover .project-tech,
+.project-card:hover p {
+    opacity: 1;
 }
 
 .project-card.hidden {
@@ -785,10 +848,12 @@ textarea {
     margin-top: 40px;
 }
 
-.social-links a {
-    font-size: 11px;
-    font-weight: 700;
-    text-decoration: underline;
+.social-links {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-top: 40px;
+    align-items: flex-start;
 }
 
 .contact-form {
@@ -828,6 +893,81 @@ textarea {
 
 .contact-form .button {
     align-self: flex-start;
+}
+
+/* modal do sistema */
+
+.system-modal {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(5, 4, 10, 0.82);
+    backdrop-filter: blur(5px);
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.25s ease;
+    z-index: 9999;
+}
+
+.system-modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.system-modal-box {
+    width: min(420px, calc(100% - 40px));
+    padding: 32px;
+    background: #0d0b14;
+    border: 1px solid #a855f7;
+    box-shadow: 0 0 35px rgba(168, 85, 247, 0.2);
+    text-align: center;
+    transform: translateY(15px) scale(0.97);
+    transition: 0.25s ease;
+}
+
+.system-modal.active .system-modal-box {
+    transform: translateY(0) scale(1);
+}
+
+.system-modal-icon {
+    width: 52px;
+    height: 52px;
+    margin: 0 auto 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #a855f7;
+    color: #a855f7;
+    font-size: 24px;
+}
+
+.system-modal-box h3 {
+    margin-bottom: 12px;
+    color: #ffffff;
+}
+
+.system-modal-box p {
+    margin-bottom: 24px;
+    color: #aaa4b8;
+    line-height: 1.6;
+}
+
+.system-modal-box button {
+    padding: 12px 24px;
+    border: none;
+    background: #a855f7;
+    color: #ffffff;
+    font-family: inherit;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.system-modal-box button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 18px rgba(168, 85, 247, 0.35);
 }
 
 footer {
