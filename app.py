@@ -5,9 +5,9 @@ from html import escape
 import os
 import resend
 
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parent
 
-load_dotenv(Path(__file__).resolve().parent / ".env")
+load_dotenv(BASE_DIR / ".env")
 
 app = Flask(
     __name__,
@@ -69,11 +69,9 @@ def contact():
                 <h2>Novo contato pelo portfólio</h2>
 
                 <p><strong>Nome:</strong> {name}</p>
-
                 <p><strong>E-mail:</strong> {email}</p>
 
                 <p><strong>Mensagem:</strong></p>
-
                 <p>{message}</p>
             """
         }
