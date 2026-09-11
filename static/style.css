@@ -1048,10 +1048,11 @@ footer > div:first-child {
     }
 
     .hero {
-        grid-template-columns: 1.1fr .9fr;
-        gap: 100px; /* aumente para 90px ou 100px */
+        grid-template-columns: 1fr;
+        gap: 40px; 
         padding: 70px 25px;
         min-height: auto;
+        text-align: center;
     }
 
     .hero-visual {
@@ -1108,7 +1109,12 @@ footer > div:first-child {
     }
 
     .hero-visual {
-        min-height: 330px;
+        min-height: 400px;
+        order: -1;
+    }
+
+    .profile-image {
+        width: 100%;
     }
 
     .circle-main {
