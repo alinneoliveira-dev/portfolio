@@ -681,6 +681,12 @@ body.dark .nav-links a {
     font-weight: 700;
 }
 
+.project-links {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
 .project-footer a {
     text-decoration: underline;
 }
