@@ -1108,6 +1108,10 @@ footer > div:first-child {
         letter-spacing: -1px;
     }
 
+    .decrypt-line {
+    display: inline-block;
+    }   
+
     .hero-visual {
         min-height: 400px;
         order: -1;

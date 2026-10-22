@@ -287,12 +287,57 @@ function animateParticles() {
 
 animateParticles();
 
-const heroTitle = document.querySelector(".hero-title");
+/* efeito de descriptografia do título */
 
-setInterval(() => {
-    heroTitle.style.transform = "translateX(1px)";
+const decryptLines = document.querySelectorAll(".decrypt-line");
+
+const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#$%&@";
+
+function decryptText(element, finalText, duration = 1000) {
+    const intervalTime = 35;
+    const totalFrames = Math.ceil(duration / intervalTime);
+
+    let frame = 0;
+
+    const animation = setInterval(() => {
+        const progress = frame / totalFrames;
+        const revealed = Math.floor(progress * finalText.length);
+
+        let result = "";
+
+        for (let i = 0; i < finalText.length; i++) {
+
+            if (finalText[i] === " ") {
+                result += " ";
+            } else if (i < revealed) {
+                result += finalText[i];
+            } else {
+                result += characters[
+                    Math.floor(Math.random() * characters.length)
+                ];
+            }
+        }
+
+        element.textContent = result;
+
+        frame++;
+
+        if (frame > totalFrames) {
+            clearInterval(animation);
+            element.textContent = finalText;
+        }
+
+    }, intervalTime);
+}
+
+decryptLines.forEach((line, index) => {
 
     setTimeout(() => {
-        heroTitle.style.transform = "translateX(0)";
-    }, 80);
-}, 7000);
+        decryptText(
+            line,
+            line.textContent.trim(),
+            1000
+        );
+    }, index * 180);
+
+});
