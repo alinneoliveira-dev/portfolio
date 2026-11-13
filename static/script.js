@@ -2,6 +2,8 @@
 document.addEventListener("DOMContentLoaded", () => {
 
     const WHATSAPP_NUMBER = "5511993130498";
+    const THEME_KEY = "portfolio-theme";
+
     const body = document.body;
     const menuToggle = document.getElementById("menuToggle");
     const navLinks = document.getElementById("navLinks");
@@ -10,8 +12,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
         menuToggle.addEventListener("click", () => {
 
-            menuToggle.classList.toggle("active");
-            navLinks.classList.toggle("active");
+            const isOpen = menuToggle.classList.toggle("active");
+
+            navLinks.classList.toggle("active", isOpen);
+
+            menuToggle.setAttribute(
+                "aria-expanded",
+                String(isOpen)
+            );
 
         });
 
@@ -22,13 +30,16 @@ document.addEventListener("DOMContentLoaded", () => {
                 menuToggle.classList.remove("active");
                 navLinks.classList.remove("active");
 
+                menuToggle.setAttribute("aria-expanded", "false");
+
             });
 
         });
 
     }
+
     const themeToggle = document.getElementById("themeToggle");
-    const THEME_KEY = "portfolio-theme";
+
     const moonIcon = `
         <svg viewBox="0 0 24 24"
              width="20"
@@ -61,7 +72,6 @@ document.addEventListener("DOMContentLoaded", () => {
         </svg>
     `;
 
-
     function applyTheme(theme) {
 
         const isDark = theme === "dark";
@@ -79,7 +89,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             themeToggle.setAttribute(
                 "title",
-                isDark ? "Modo escuro" : "Modo claro"
+                isDark ? "Ativar tema claro" : "Ativar tema escuro"
             );
 
         }
@@ -91,7 +101,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const savedTheme = localStorage.getItem(THEME_KEY) || "dark";
 
     applyTheme(savedTheme);
-
 
     if (themeToggle) {
 
@@ -106,47 +115,41 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     const navbar = document.getElementById("navbar");
-
-    function updateNavbar() {
-
-        if (!navbar) return;
-
-        navbar.classList.toggle("scrolled", window.scrollY > 50);
-
-    }
-
-    window.addEventListener("scroll", updateNavbar);
-
-    updateNavbar();
-
     const scrollProgress = document.getElementById("scrollProgress");
 
-    function updateScrollProgress() {
+    function updateScroll() {
 
-        if (!scrollProgress) return;
+        if (navbar) {
 
-        const scrollableHeight =
-            document.documentElement.scrollHeight - window.innerHeight;
-
-        if (scrollableHeight <= 0) {
-
-            scrollProgress.style.width = "0%";
-            return;
+            navbar.classList.toggle(
+                "scrolled",
+                window.scrollY > 50
+            );
 
         }
 
-        const progress =
-            (window.scrollY / scrollableHeight) * 100;
+        if (scrollProgress) {
 
-        scrollProgress.style.width = `${progress}%`;
+            const scrollableHeight =
+                document.documentElement.scrollHeight -
+                window.innerHeight;
+
+            const percentage = scrollableHeight > 0
+                ? (window.scrollY / scrollableHeight) * 100
+                : 0;
+
+            scrollProgress.style.width = `${percentage}%`;
+
+        }
 
     }
 
-    window.addEventListener("scroll", updateScrollProgress);
+    window.addEventListener("scroll", updateScroll);
 
-    window.addEventListener("resize", updateScrollProgress);
+    window.addEventListener("resize", updateScroll);
 
-    updateScrollProgress();
+    updateScroll();
+
 
     const filterButtons = document.querySelectorAll(".filter");
     const projectCards = document.querySelectorAll(".project-card");
@@ -158,25 +161,22 @@ document.addEventListener("DOMContentLoaded", () => {
             const selectedFilter = button.dataset.filter;
 
             filterButtons.forEach(item => {
-
                 item.classList.remove("active");
-
             });
 
             button.classList.add("active");
-
 
             projectCards.forEach(card => {
 
                 const categories = (
                     card.dataset.category || ""
-                ).split(" ");
+                ).split(/\s+/);
 
                 const shouldShow =
                     selectedFilter === "all" ||
                     categories.includes(selectedFilter);
 
-                card.style.display = shouldShow ? "" : "none";
+                card.classList.toggle("hidden", !shouldShow);
 
             });
 
@@ -195,7 +195,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     if (entry.isIntersecting) {
 
-                        entry.target.classList.add("active");
+                        entry.target.classList.add("visible");
 
                         observer.unobserve(entry.target);
 
@@ -210,17 +210,13 @@ document.addEventListener("DOMContentLoaded", () => {
         );
 
         revealElements.forEach(element => {
-
             revealObserver.observe(element);
-
         });
 
     } else {
 
         revealElements.forEach(element => {
-
-            element.classList.add("active");
-
+            element.classList.add("visible");
         });
 
     }
@@ -239,6 +235,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
     }
+
     const canvas = document.getElementById("particlesCanvas");
 
     if (canvas) {
@@ -249,17 +246,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
             let particles = [];
 
-            let animationFrame;
-
             let canvasWidth = 0;
             let canvasHeight = 0;
 
-            const PARTICLE_COUNT = 45;
+            const PARTICLE_COUNT =
+                window.innerWidth < 600 ? 25 : 45;
 
             const accentColor = getComputedStyle(body)
-                .getPropertyValue("--accent-color")
-                .trim() || "#00d9ff";
-
+                .getPropertyValue("--accent-light")
+                .trim() || "#a855f7";
 
             function resizeCanvas() {
 
@@ -288,7 +283,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
             }
 
-
             function createParticles() {
 
                 particles = [];
@@ -298,13 +292,11 @@ document.addEventListener("DOMContentLoaded", () => {
                     particles.push({
 
                         x: Math.random() * canvasWidth,
-
                         y: Math.random() * canvasHeight,
 
                         size: Math.random() * 2 + 0.5,
 
                         speedX: (Math.random() - 0.5) * 0.35,
-
                         speedY: (Math.random() - 0.5) * 0.35,
 
                         opacity: Math.random() * 0.4 + 0.1
@@ -314,7 +306,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
 
             }
-
 
             function animateParticles() {
 
@@ -331,13 +322,10 @@ document.addEventListener("DOMContentLoaded", () => {
                     particle.y += particle.speedY;
 
                     if (particle.x < 0) particle.x = canvasWidth;
-
                     if (particle.x > canvasWidth) particle.x = 0;
 
                     if (particle.y < 0) particle.y = canvasHeight;
-
                     if (particle.y > canvasHeight) particle.y = 0;
-
 
                     ctx.beginPath();
 
@@ -350,7 +338,6 @@ document.addEventListener("DOMContentLoaded", () => {
                     );
 
                     ctx.fillStyle = accentColor;
-
                     ctx.globalAlpha = particle.opacity;
 
                     ctx.fill();
@@ -359,24 +346,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 ctx.globalAlpha = 1;
 
-                animationFrame = requestAnimationFrame(
-                    animateParticles
-                );
+                requestAnimationFrame(animateParticles);
 
             }
 
-
             resizeCanvas();
-
             createParticles();
-
             animateParticles();
-
 
             window.addEventListener("resize", () => {
 
                 resizeCanvas();
-
                 createParticles();
 
             });
@@ -384,7 +364,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
     }
-
 
     const systemModal = document.getElementById("systemModal");
     const systemModalTitle = document.getElementById("systemModalTitle");
@@ -396,15 +375,11 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!systemModal) return;
 
         if (systemModalTitle) {
-
             systemModalTitle.textContent = title;
-
         }
 
         if (systemModalMessage) {
-
             systemModalMessage.textContent = message;
-
         }
 
         systemModal.classList.add("active");
@@ -419,7 +394,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 
-
     if (systemModalClose) {
 
         systemModalClose.addEventListener(
@@ -429,130 +403,96 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 
-
     if (systemModal) {
 
         systemModal.addEventListener("click", event => {
 
             if (event.target === systemModal) {
-
                 closeSystemModal();
-
             }
 
         });
 
     }
 
-
     document.addEventListener("keydown", event => {
 
         if (event.key === "Escape") {
-
             closeSystemModal();
-
         }
 
     });
 
     const contactForm = document.getElementById("contactForm");
-    const sendMethodButtons = document.querySelectorAll(
-        ".send-method-button"
-    );
 
-    const nameInput = document.getElementById("name");
-    const emailInput = document.getElementById("email");
-    const subjectInput = document.getElementById("subject");
-    const messageInput = document.getElementById("message");
-    const submitButton = contactForm?.querySelector(
-        'button[type="submit"]'
-    );
+    if (contactForm) {
 
-    let currentSendMethod = "email";
+        const sendMethodButtons = document.querySelectorAll(
+            ".send-method-button"
+        );
 
-    const nameGroup = nameInput?.closest(".input-group");
-    const emailGroup = emailInput?.closest(".input-group");
-    const subjectGroup = subjectInput?.closest(".input-group");
-    const contactHint = contactForm?.querySelector(".contact-hint");
+        const nameGroup = document.getElementById("nameGroup");
+        const emailGroup = document.getElementById("emailGroup");
+        const subjectGroup = document.getElementById("subjectGroup");
 
-    function updateSendMethod(method) {
+        const nameInput = document.getElementById("name");
+        const emailInput = document.getElementById("email");
+        const subjectInput = document.getElementById("subject");
+        const messageInput = document.getElementById("message");
 
-        currentSendMethod = method;
+        const submitButton = contactForm.querySelector(
+            'button[type="submit"]'
+        );
 
-        const isWhatsApp = method === "whatsapp";
+        let currentSendMethod = "email";
+
+        function setSendMethod(method) {
+
+            currentSendMethod = method;
+
+            const isEmail = method === "email";
+
+            sendMethodButtons.forEach(button => {
+
+                const isActive = button.dataset.method === method;
+
+                button.classList.toggle("active", isActive);
+
+                button.setAttribute(
+                    "aria-pressed",
+                    String(isActive)
+                );
+
+            });
+
+            // Nome, e-mail e assunto são exclusivos do e-mail.
+            if (nameGroup) nameGroup.hidden = !isEmail;
+            if (emailGroup) emailGroup.hidden = !isEmail;
+            if (subjectGroup) subjectGroup.hidden = !isEmail;
+
+            if (nameInput) nameInput.required = isEmail;
+            if (emailInput) emailInput.required = isEmail;
+
+            if (submitButton) {
+
+                submitButton.innerHTML = isEmail
+                    ? 'ENVIAR POR E-MAIL <span>→</span>'
+                    : 'ENVIAR PELO WHATSAPP <span>→</span>';
+
+            }
+
+        }
 
         sendMethodButtons.forEach(button => {
 
-            const isActive = button.dataset.method === method;
+            button.addEventListener("click", () => {
 
-            button.classList.toggle("active", isActive);
+                setSendMethod(button.dataset.method);
 
-            button.setAttribute(
-                "aria-pressed",
-                String(isActive)
-            );
+            });
 
         });
-
-        if (nameGroup) {
-
-            nameGroup.hidden = isWhatsApp;
-
-        }
-
-        if (emailGroup) {
-
-            emailGroup.hidden = isWhatsApp;
-
-        }
-
-        if (subjectGroup) {
-
-            subjectGroup.hidden = isWhatsApp;
-
-        }
-
-        if (nameInput) {
-
-            nameInput.required = !isWhatsApp;
-
-        }
-
-        if (emailInput) {
-
-            emailInput.required = !isWhatsApp;
-
-        }
-
-        if (contactHint) {
-
-            contactHint.hidden = !isWhatsApp;
-
-        }
-
-        if (submitButton) {
-
-            submitButton.innerHTML = isWhatsApp
-                ? 'ENVIAR PELO WHATSAPP <span>→</span>'
-                : 'ENVIAR POR E-MAIL <span>→</span>';
-
-        }
-
-    }
-
-    sendMethodButtons.forEach(button => {
-
-        button.addEventListener("click", () => {
-
-            updateSendMethod(button.dataset.method);
-
-        });
-
-    });
-
-    updateSendMethod("email");
-
-    if (contactForm) {
+        setSendMethod("email");
 
         contactForm.addEventListener("submit", async event => {
 
@@ -570,31 +510,23 @@ document.addEventListener("DOMContentLoaded", () => {
                 return;
 
             }
-
             if (currentSendMethod === "whatsapp") {
 
-                if (
-                    !WHATSAPP_NUMBER ||
-                    WHATSAPP_NUMBER === "55DDDNUMERO" ||
-                    !/^\d+$/.test(WHATSAPP_NUMBER)
-                ) {
+                if (!/^\d{12,13}$/.test(WHATSAPP_NUMBER)) {
 
                     openSystemModal(
-                        "Número não configurado",
-                        "Configure seu número de WhatsApp no arquivo script.js."
+                        "Número inválido",
+                        "Verifique o número de WhatsApp configurado no JavaScript."
                     );
 
                     return;
 
                 }
 
-
-                const whatsappMessage = encodeURIComponent(message);
-
                 const whatsappURL =
-                    `https://wa.me/${WHATSAPP_NUMBER}?text=${whatsappMessage}`;
+                    `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
 
-
+                // Abre o WhatsApp com a mensagem preenchida.
                 window.open(
                     whatsappURL,
                     "_blank",
@@ -604,7 +536,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 return;
 
             }
-
 
             if (!name || !email) {
 
@@ -625,46 +556,41 @@ document.addEventListener("DOMContentLoaded", () => {
 
             }
 
-
-            const originalButtonText = submitButton.innerHTML;
-
+            const originalButtonText = submitButton
+                ? submitButton.innerHTML
+                : "";
 
             try {
 
-                submitButton.disabled = true;
+                if (submitButton) {
 
-                submitButton.textContent = "ENVIANDO...";
+                    submitButton.disabled = true;
+                    submitButton.textContent = "ENVIANDO...";
 
+                }
 
                 const response = await fetch("/api/contact", {
 
                     method: "POST",
 
                     headers: {
-
                         "Content-Type": "application/json"
-
                     },
 
                     body: JSON.stringify({
 
                         name: name,
-
                         email: email,
-
                         subject: subject,
-
                         message: message
 
                     })
 
                 });
 
-
                 const data = await response.json();
 
-
-                if (!response.ok) {
+                if (!response.ok || !data.success) {
 
                     throw new Error(
                         data.error ||
@@ -674,18 +600,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 }
 
-
                 contactForm.reset();
 
-
-                updateSendMethod("email");
-
+                setSendMethod("email");
 
                 openSystemModal(
                     "Mensagem enviada!",
-                    "Obrigada pelo contato! Em breve entrarei em contato com você."
+                    "Obrigada pelo contato! Recebi sua mensagem e em breve entrarei em contato."
                 );
-
 
             } catch (error) {
 
@@ -694,21 +616,20 @@ document.addEventListener("DOMContentLoaded", () => {
                     error
                 );
 
-
                 openSystemModal(
                     "Ops! Algo deu errado.",
                     error.message ||
                     "Não foi possível enviar sua mensagem. Tente novamente."
                 );
 
-
             } finally {
 
-                submitButton.disabled = false;
+                if (submitButton) {
 
-                submitButton.innerHTML = originalButtonText;
+                    submitButton.disabled = false;
+                    submitButton.innerHTML = originalButtonText;
 
-                updateSendMethod(currentSendMethod);
+                }
 
             }
 

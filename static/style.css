@@ -1991,3 +1991,7 @@ body:not(.dark) .stack-card {
     }
 
 }
+
+.input-group[hidden] {
+    display: none !important;
+}
