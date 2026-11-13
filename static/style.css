@@ -1017,7 +1017,6 @@ footer > div:first-child {
     transform: translateY(0);
 }
 
-/* responsivo */
 
 @media (max-width: 900px) {
     .navbar {
@@ -1568,7 +1567,6 @@ footer > div:first-child {
     box-shadow: 0 0 8px var(--accent-light);
 }
 
-/* Ajustes de tema: mantém contraste nos componentes novos */
 body.dark .contact-card,
 body.dark .contact-form,
 body.dark .stack-card {
@@ -1634,19 +1632,362 @@ body:not(.dark) .stack-card {
 }
 
 
-/* Ocultar campos no modo WhatsApp */
-.contact-form .input-group[hidden] {
-    display: none !important;
+/* =====================================================
+   RESPONSIVIDADE MOBILE — ALINNE.DEV
+   Ajustes complementares sem alterar o desktop
+===================================================== */
+
+@media (max-width: 600px) {
+
+    /* NAVBAR */
+    .navbar {
+        padding: 13px 18px;
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        gap: 12px;
+    }
+
+    .logo {
+        font-size: 18px;
+    }
+
+    .menu-toggle {
+        margin-left: auto;
+        order: 2;
+    }
+
+    .nav-actions {
+        order: 3;
+    }
+
+    .circle-button {
+        width: 44px;
+        height: 44px;
+        min-width: 44px;
+    }
+
+    .nav-links {
+        order: 4;
+        flex-basis: 100%;
+    }
+
+    .nav-links a {
+        font-size: 14px;
+    }
+
+
+    /* HERO */
+    .hero {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        padding: 35px 22px 65px;
+        min-height: auto;
+    }
+
+    .hero-visual {
+        order: -1;
+        width: 100%;
+        min-height: 0;
+        height: 330px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: visible;
+    }
+
+    .visual-shapes {
+        position: absolute;
+        inset: 0;
+    }
+
+    .circle-main {
+        width: 215px;
+        height: 215px;
+    }
+
+    .circle-secondary {
+        width: 150px;
+        height: 150px;
+    }
+
+    .ring {
+        width: 235px;
+        height: 235px;
+    }
+
+    .square {
+        width: 75px;
+        height: 75px;
+    }
+
+    .image-container {
+        width: 100%;
+        height: 100%;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .profile-image {
+        width: 100%;
+        height: 100%;
+        max-height: 310px;
+        object-fit: contain;
+    }
+
+    .hero-content {
+        width: 100%;
+        text-align: center;
+    }
+
+    .eyebrow {
+        font-size: 10px;
+        letter-spacing: 2px;
+        margin-bottom: 18px;
+    }
+
+    .hero-title {
+        font-size: clamp(35px, 9vw, 45px);
+        line-height: .98;
+        letter-spacing: -1.5px;
+    }
+
+    .hero-description {
+        font-size: 13px;
+        line-height: 1.85;
+        margin: 22px auto 0;
+        max-width: 430px;
+    }
+
+    .hero-buttons {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        gap: 12px;
+        margin-top: 26px;
+    }
+
+    .hero-buttons .button {
+        width: 100%;
+    }
+
+
+    /* SEÇÕES */
+    .section {
+        padding: 75px 22px;
+    }
+
+    .section-label {
+        font-size: 10px;
+        letter-spacing: 1.5px;
+    }
+
+    .section h2 {
+        font-size: clamp(33px, 8vw, 42px);
+        line-height: 1;
+    }
+
+    .section-description {
+        font-size: 13px;
+        line-height: 1.8;
+    }
+
+
+    /* SOBRE */
+    .about-grid {
+        gap: 35px;
+        margin-top: 35px;
+    }
+
+    .about-text p {
+        font-size: 13px;
+        line-height: 1.85;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .stat-card {
+        min-height: 125px;
+        padding: 15px;
+    }
+
+    .stat-card strong {
+        font-size: 34px;
+    }
+
+
+    /* PROJETOS */
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .project-card {
+        min-height: 320px;
+        padding: 24px 20px;
+    }
+
+    .project-card h3 {
+        font-size: 25px;
+    }
+
+    .project-card p {
+        font-size: 12px;
+    }
+
+    .filter-container {
+        gap: 8px;
+        margin: 30px 0;
+    }
+
+    .filter {
+        padding: 9px 13px;
+        font-size: 9px;
+    }
+
+
+    /* STACK — CARDS */
+    .stack-list {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 16px;
+        margin-top: 35px;
+        border: none;
+    }
+
+    .stack-card {
+        width: 100%;
+        min-width: 0;
+        padding: 25px 22px;
+    }
+
+    .stack-card h3 {
+        font-size: 22px;
+    }
+
+    .stack-card-description {
+        font-size: 13px;
+        line-height: 1.8;
+    }
+
+    .stack-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .stack-tag {
+        font-size: 11px;
+    }
+
+    .cv-section {
+        padding: 55px 22px;
+    }
+
+    .cv-inner {
+        align-items: stretch;
+        gap: 28px;
+    }
+
+    .cv-section h2 {
+        font-size: 36px;
+    }
+
+    .cv-inner .button {
+        width: 100%;
+    }
+
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 35px;
+        margin-top: 40px;
+    }
+
+    .contact-card {
+        min-height: 82px;
+        padding: 16px;
+        gap: 14px;
+    }
+
+    .contact-card-icon {
+        flex-shrink: 0;
+    }
+
+    .contact-card-value {
+        font-size: 12px;
+        overflow-wrap: anywhere;
+    }
+
+    .contact-form {
+        gap: 20px;
+        width: 100%;
+    }
+
+    .send-method-options {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
+
+    .send-method-button {
+        min-width: 0;
+        padding: 14px 8px;
+        font-size: 12px;
+    }
+
+    .input-group input,
+    .input-group textarea {
+        font-size: 13px;
+        padding: 14px;
+    }
+
+    .contact-form .button {
+        width: 100%;
+    }
+
+
+    footer {
+        padding: 25px 22px;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+
 }
 
-/* Transição dos botões de envio */
-.send-method-button {
-    transition: all 0.25s ease;
-    cursor: pointer;
-}
 
-/* Destaque do método selecionado */
-.send-method-button.active {
-    border-color: var(--accent-color);
-    box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.12);
+@media (max-width: 380px) {
+
+    .hero {
+        padding-left: 17px;
+        padding-right: 17px;
+    }
+
+    .hero-visual {
+        height: 285px;
+    }
+
+    .profile-image {
+        max-height: 270px;
+    }
+
+    .hero-title {
+        font-size: 34px;
+    }
+
+    .section h2 {
+        font-size: 32px;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .send-method-button {
+        font-size: 11px;
+    }
+
 }
