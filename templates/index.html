@@ -1,22 +1,33 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <meta name="description" content="Portfólio de Alinne Oliveira — Desenvolvedora Full Stack">
     <meta name="author" content="Alinne Oliveira">
+
     <title>Alinne Oliveira</title>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
     <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/png" href="{{ url_for('static', filename='assets/favicon.png') }}">   
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}?v=2">
+
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='assets/favicon.png') }}">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}?v=3">
 </head>
+
 <body>
 
     <div class="scroll-progress" id="scrollProgress"></div>
     <canvas id="particlesCanvas"></canvas>
+
     <header class="navbar" id="navbar">
+
         <a href="#home" class="logo">
             ALINNE<span>.DEV</span>
         </a>
@@ -31,24 +42,35 @@
             <a href="#about">SOBRE</a>
             <a href="#projects">PROJETOS</a>
             <a href="#stack">STACK</a>
-            <!--<a href="#journey">JORNADA</a>-->
             <a href="#contact">CONTATO</a>
         </nav>
 
         <div class="nav-actions">
-            <button id="themeToggle" class="circle-button" aria-label="Alternar tema">
-                ◐
+            <button
+                id="themeToggle"
+                class="circle-button"
+                aria-label="Alternar tema"
+                title="Alternar tema">
             </button>
+
         </div>
+
     </header>
+
 
     <main>
         <section class="hero" id="home">
+
             <div class="hero-content">
+
                 <div class="eyebrow">
                     FULL STACK • DADOS • IA
                 </div>
-                <h1 class="hero-title">DESENVOLVEDORA<br>FULL STACK</h1>
+
+                <h1 class="hero-title">
+                    DESENVOLVEDORA<br>
+                    FULL STACK
+                </h1>
 
                 <p class="hero-description">
                     Desenvolvo aplicações, APIs e soluções orientadas
@@ -57,45 +79,67 @@
                 </p>
 
                 <div class="hero-buttons">
+
                     <a href="#projects" class="button primary">
-                        VER PROJETOS 
+                        VER PROJETOS
                     </a>
 
                     <a href="#contact" class="button secondary">
                         ENTRAR EM CONTATO
                     </a>
+
                 </div>
+
             </div>
 
+
             <div class="hero-visual">
+
                 <div class="visual-shapes">
+
                     <div class="shape circle-main"></div>
                     <div class="shape circle-secondary"></div>
                     <div class="shape ring"></div>
                     <div class="shape square"></div>
+
                     <div class="shape dot dot-one"></div>
                     <div class="shape dot dot-two"></div>
                     <div class="shape dot dot-three"></div>
+
                 </div>
 
                 <div class="image-container">
-                    <img src="{{ url_for('static', filename='assets/eu.png') }}" alt="euzin" class="profile-image">
+
+                    <img
+                        src="{{ url_for('static', filename='assets/eu.png') }}"
+                        alt="Alinne Oliveira"
+                        class="profile-image">
+
                 </div>
+
             </div>
+
         </section>
+
         <section class="section about" id="about">
+
             <div class="section-inner">
+
                 <div class="section-label">
                     <span>/* um pouco sobre mim */</span>
                 </div>
+
                 <h2>
                     QUEM ESTÁ POR TRÁS
                     <br>
                     DO CÓDIGO.
                 </h2>
 
-                <div class="about-grid reveal">
+
+                <div class="about-grid">
+
                     <div class="about-text">
+
                         <p>
                             Sou <strong>Alinne</strong>, desenvolvedora
                             em formação e apaixonada por transformar
@@ -103,29 +147,41 @@
                         </p>
 
                         <p>
-                            Atualmente atuando como <span class="highlight">desenvolvedora full stack jr</span>
-                            na ServCredi, onde encaro o ciclo completo: do desenvolvimento e manutenção de sistemas web 
+                            Atualmente atuando como
+                            <span class="highlight">desenvolvedora full stack jr</span>
+                            na ServCredi, onde encaro o ciclo completo:
+                            do desenvolvimento e manutenção de sistemas web
                             até a otimização de consultas e rotinas.
                         </p>
 
-                       <p>
-                             Além do código, <span class="highlight">orquestro fluxos de dados e automações</span>, 
-                            conectando pontas e transformando informações brutas em inteligência para os bastidores dos negócios.
+                        <p>
+                            Além do código,
+                            <span class="highlight">orquestro fluxos de dados e automações</span>,
+                            conectando pontas e transformando informações
+                            brutas em inteligência para os bastidores dos negócios.
                         </p>
 
                         <p>
-                            Movida a <span class="highlight">café,</span> boa música nos fones e uma curiosidade sem fim para transformar lógica em solução.
+                            Movida a <span class="highlight">café</span>,
+                            boa música nos fones e uma curiosidade sem fim
+                            para transformar lógica em solução.
                         </p>
 
+
                         <div class="tag-container">
+
                             <span>Python</span>
                             <span>C#</span>
                             <span>SQL</span>
                             <span>Power BI</span>
                             <span>Azure</span>
+
                         </div>
+
                     </div>
+
                     <div class="stats-grid">
+
                         <div class="stat-card">
                             <span class="stat-key">years_studying</span>
                             <strong>2+</strong>
@@ -149,15 +205,23 @@
                             <strong>∞</strong>
                             <small>CAFÉZINHO</small>
                         </div>
+
                     </div>
+
                 </div>
+
             </div>
+
         </section>
+
         <section class="section projects" id="projects">
+
             <div class="section-inner">
+
                 <div class="section-label">
                     <span>/* meus projetos */</span>
                 </div>
+
                 <h2>
                     LAB DE PROJETOS:
                     <br>
@@ -170,43 +234,84 @@
                     e construção de sistemas.
                 </p>
 
+
+                <!-- FILTROS -->
+
                 <div class="filter-container">
-                    <button class="filter active" data-filter="all">TODOS</button>
-                    <button class="filter" data-filter="fullstack">FULL STACK</button>
-                    <button class="filter" data-filter="data">DATA</button>
-                    <button class="filter" data-filter="automation">AUTOMAÇÃO</button>
-                    <!--<button class="filter" data-filter="web">WEB</button>-->
+
+                    <button class="filter active" data-filter="all">
+                        TODOS
+                    </button>
+
+                    <button class="filter" data-filter="fullstack">
+                        FULL STACK
+                    </button>
+
+                    <button class="filter" data-filter="data">
+                        DATA
+                    </button>
+
+                    <button class="filter" data-filter="automation">
+                        AUTOMAÇÃO
+                    </button>
+
                 </div>
 
                 <div class="projects-grid">
-                        <article class="project-card" data-category="fullstack data" style="--project-image: url('assets/finance.png');">
+                    <article
+                        class="project-card"
+                        data-category="fullstack data"
+                        style="--project-image: url('assets/finance.png');">
+
                         <div class="project-header">
+
                             <span class="project-number">01</span>
                             <span class="project-type">FULL STACK</span>
+
                         </div>
+
                         <h3>FINANCE MANAGER</h3>
+
                         <div class="project-tech">
                             PYTHON · FLASK · MYSQL · POWER BI
                         </div>
+
                         <p>
                             Sistema de gerenciamento financeiro com
                             controle de transações, categorias,
                             limites mensais e visualização de dados e
-                             bot no Telegram para lançamento rápido.
+                            bot no Telegram para lançamento rápido.
                             A aplicação também conta com uma pipeline
                             de ETL para tratamento e organização dos dados.
                         </p>
+
                         <div class="project-footer">
-                            <a href="https://github.com/alinneoliveira-dev/finance-manager" target="_blank" rel="noopener noreferrer">GITHUB ↗</a>
+
+                            <a
+                                href="https://github.com/alinneoliveira-dev/finance-manager"
+                                target="_blank"
+                                rel="noopener noreferrer">
+                                GITHUB ↗
+                            </a>
+
                             <span>FLASK</span>
+
                         </div>
+
                     </article>
 
-                    <article class="project-card" data-category="fullstack" style="--project-image: url('assets/portfolio_img.png');">
+                    <article
+                        class="project-card"
+                        data-category="fullstack"
+                        style="--project-image: url('assets/portfolio_img.png');">
+
                         <div class="project-header">
+
                             <span class="project-number">02</span>
                             <span class="project-type">FULLSTACK</span>
+
                         </div>
+
                         <h3>PORTFOLIO</h3>
 
                         <div class="project-tech">
@@ -214,87 +319,176 @@
                         </div>
 
                         <p>
-                            Portfólio criado para centralizar e comprovar meus projetos e conhecimentos em desenvolvimento backend, automação e banco de dados.
+                            Portfólio criado para centralizar e comprovar
+                            meus projetos e conhecimentos em desenvolvimento
+                            backend, automação e banco de dados.
                         </p>
 
                         <div class="project-footer">
-                            <a href="https://github.com/alinneoliveira-dev/portfolio" target="_blank" rel="noopener noreferrer">GITHUB ↗</a>
+
+                            <a
+                                href="https://github.com/alinneoliveira-dev/portfolio"
+                                target="_blank"
+                                rel="noopener noreferrer">
+                                GITHUB ↗
+                            </a>
+
                             <span>FLASK</span>
+
                         </div>
+
                     </article>
 
-                    <article class="project-card" data-category="data" style="--project-image: url('assets/relatorio-powerbi.png');">
+                    <article
+                        class="project-card"
+                        data-category="data"
+                        style="--project-image: url('assets/relatorio-powerbi.png');">
+
                         <div class="project-header">
+
                             <span class="project-number">03</span>
                             <span class="project-type">DADOS</span>
+
                         </div>
-                        <h3>RELATÓRIO DE DESPESAS - POWERBI</h3>
+
+                        <h3>RELATÓRIO DE DESPESAS - POWER BI</h3>
 
                         <div class="project-tech">
-                            PYTHON · ETL · MYSQL · POWERBI 
+                            PYTHON · ETL · MYSQL · POWER BI
                         </div>
 
                         <p>
-                        Relatório de despesas do Finance Manager, desenvolvido a partir de um pipeline ETL em Python/Pandas, modelagem Star Schema e visualização de dados no Power BI.               
+                            Relatório de despesas do Finance Manager,
+                            desenvolvido a partir de um pipeline ETL
+                            em Python/Pandas, modelagem Star Schema
+                            e visualização de dados no Power BI.
                         </p>
 
                         <div class="project-footer">
-                            <a href="https://github.com/alinneoliveira-dev/finance-manager/tree/main/etl" target="_blank" rel="noopener noreferrer">GITHUB ↗</a>
+
+                            <a
+                                href="https://github.com/alinneoliveira-dev/finance-manager/tree/main/etl"
+                                target="_blank"
+                                rel="noopener noreferrer">
+                                GITHUB ↗
+                            </a>
+
                             <span>POWER BI</span>
+
                         </div>
+
                     </article>
 
-                    <article class="project-card" data-category="automation" style="--project-image: url('assets/n8n_workflow2.png');">
+                    <article
+                        class="project-card"
+                        data-category="automation"
+                        style="--project-image: url('assets/n8n_workflow2.png');">
+
                         <div class="project-header">
+
                             <span class="project-number">04</span>
                             <span class="project-type">AUTOMAÇÃO</span>
+
                         </div>
+
                         <h3>PILL ALARM</h3>
 
                         <div class="project-tech">
-                            PYTHON · POSTGRESQL · N8N · API 
+                            PYTHON · POSTGRESQL · N8N · API
                         </div>
 
                         <p>
-                            O Pill Alarm é um assistente pessoal de saúde automatizado. Ele rastreia horários de medicamentos usando um banco de dados PostgreSQL, dispara alertas programados via n8n e interage com os usuários em tempo real pelo Telegram, impulsionado por um backend em Python.
+                            O Pill Alarm é um assistente pessoal de saúde
+                            automatizado. Ele rastreia horários de
+                            medicamentos usando um banco de dados
+                            PostgreSQL, dispara alertas programados
+                            via n8n e interage com os usuários em tempo
+                            real pelo Telegram, impulsionado por um
+                            backend em Python.
                         </p>
 
                         <div class="project-footer">
-                            <a href="https://github.com/alinneoliveira-dev/pill-alarm" target="_blank" rel="noopener noreferrer">GITHUB ↗</a>
+
+                            <a
+                                href="https://github.com/alinneoliveira-dev/pill-alarm"
+                                target="_blank"
+                                rel="noopener noreferrer">
+                                GITHUB ↗
+                            </a>
+
                             <span>N8N</span>
+
                         </div>
+
                     </article>
-                    <article class="project-card" data-category="fullstack" style="--project-image: url('assets/sharkhub.png');">
+
+                    <article
+                        class="project-card"
+                        data-category="fullstack"
+                        style="--project-image: url('assets/sharkhub.png');">
+
                         <div class="project-header">
+
                             <span class="project-number">05</span>
                             <span class="project-type">FULLSTACK</span>
+
                         </div>
 
                         <h3>SHARK HUB</h3>
+
                         <div class="project-tech">
-                         HTML · CSS · JAVASCRIPT · 
+                            HTML · CSS · JAVASCRIPT · PYTHON · FLASK
                         </div>
+
                         <p>
-                            O SharkHub nasceu de uma paixão pessoal pelos tubarões e pelo oceano. Um projeto que transforma esse interesse em uma experiência interativa, unindo criatividade, exploração e desenvolvimento web.
+                            O SharkHub nasceu de uma paixão pessoal pelos
+                            tubarões e pelo oceano. Um projeto que transforma
+                            esse interesse em uma experiência interativa,
+                            unindo criatividade, exploração e desenvolvimento web.
+                        </p>
+
                         <div class="project-footer">
+
                             <div class="project-links">
-                            <a href="https://github.com/alinneoliveira-dev/sharkhub" target="_blank" rel="noopener noreferrer">GITHUB ↗</a>
-                            <a href="https://sharkhub.onrender.com/" target="_blank" rel="noopener noreferrer">PRODUÇÃO ↗</a>
+
+                                <a
+                                    href="https://github.com/alinneoliveira-dev/sharkhub"
+                                    target="_blank"
+                                    rel="noopener noreferrer">
+                                    GITHUB ↗
+                                </a>
+
+                                <a
+                                    href="https://sharkhub.onrender.com/"
+                                    target="_blank"
+                                    rel="noopener noreferrer">
+                                    PRODUÇÃO ↗
+                                </a>
+
                             </div>
+
                             <span>FRONT-END</span>
+
                         </div>
+
                     </article>
 
+
                 </div>
+
             </div>
+
         </section>
 
-        <!-- STACK -->
         <section class="section stack" id="stack">
+
             <div class="section-inner">
+
                 <div class="section-label">
+
                     <span>/* ferramentas */</span>
                     <span>stack atual</span>
+
                 </div>
 
                 <h2>
@@ -305,102 +499,229 @@
                 </h2>
 
                 <p class="section-description">
-                    Tecnologias que venho utilizando em projetos,
-                    estudos e experiências práticas.
+                    Tecnologias e ferramentas que fazem parte
+                    dos meus projetos, estudos e experiências práticas.
                 </p>
 
+
+
                 <div class="stack-list">
-                    <div class="stack-item">
-                        <span class="stack-index">01</span>
-                        <span class="stack-name">PYTHON</span>
-                        <span class="stack-area">BACK-END / DATA</span>
-                    </div>
 
-                    <div class="stack-item">
-                        <span class="stack-index">02</span>
-                        <span class="stack-name">C#</span>
-                        <span class="stack-area">BACK-END</span>
-                    </div>
+                    <article class="stack-card">
 
-                    <div class="stack-item">
-                        <span class="stack-index">03</span>
-                        <span class="stack-name">JAVASCRIPT</span>
-                        <span class="stack-area">FRONT-END</span>
-                    </div>
+                        <div class="stack-card-top">
+                            <span class="stack-index">01</span>
+                        </div>
 
-                    <div class="stack-item">
-                        <span class="stack-index">04</span>
-                        <span class="stack-name">FLASK</span>
-                        <span class="stack-area">WEB / API</span>
-                    </div>
+                        <h3>Front-end</h3>
 
-                    <div class="stack-item">
-                        <span class="stack-index">05</span>
-                        <span class="stack-name">SQL SERVER</span>
-                        <span class="stack-area">DATABASE</span>
-                    </div>
+                        <p class="stack-card-description">
+                            Interfaces web, estruturação de páginas
+                            e interações para aplicações responsivas.
+                        </p>
 
-                    <div class="stack-item">
-                        <span class="stack-index">06</span>
-                        <span class="stack-name">MYSQL</span>
-                        <span class="stack-area">DATABASE</span>
-                    </div>
+                        <div class="stack-tags">
 
-                    <div class="stack-item">
-                        <span class="stack-index">07</span>
-                        <span class="stack-name">DOCKER</span>
-                        <span class="stack-area">INFRA</span>
-                    </div>
+                            <span class="stack-tag">HTML</span>
+                            <span class="stack-tag">CSS</span>
+                            <span class="stack-tag">JavaScript</span>
 
-                    <div class="stack-item">
-                        <span class="stack-index">08</span>
-                        <span class="stack-name">POWER BI</span>
-                        <span class="stack-area">DATA / BI</span>
-                    </div>
+                        </div>
 
-                    <div class="stack-item">
-                        <span class="stack-index">09</span>
-                        <span class="stack-name">AZURE</span>
-                        <span class="stack-area">CLOUD</span>
-                    </div>
+                    </article>
 
-                    <div class="stack-item">
-                        <span class="stack-index">10</span>
-                        <span class="stack-name">GIT / GITHUB</span>
-                        <span class="stack-area">VERSION CONTROL</span>
-                    </div>
+                    <article class="stack-card">
+
+                        <div class="stack-card-top">
+                            <span class="stack-index">02</span>
+                        </div>
+
+                        <h3>Back-end</h3>
+
+                        <p class="stack-card-description">
+                            Desenvolvimento de aplicações, regras
+                            de negócio, integrações e APIs.
+                        </p>
+
+                        <div class="stack-tags">
+
+                            <span class="stack-tag">Python</span>
+                            <span class="stack-tag">Flask</span>
+                            <span class="stack-tag">C#</span>
+
+                        </div>
+
+                    </article>
+
+                    <article class="stack-card">
+
+                        <div class="stack-card-top">
+                            <span class="stack-index">03</span>
+                        </div>
+
+                        <h3>Banco de dados</h3>
+
+                        <p class="stack-card-description">
+                            Modelagem, consultas e organização
+                            de dados relacionais.
+                        </p>
+
+                        <div class="stack-tags">
+
+                            <span class="stack-tag">SQL Server</span>
+                            <span class="stack-tag">MySQL</span>
+                            <span class="stack-tag">PostgreSQL</span>
+
+                        </div>
+
+                    </article>
+
+                    <article class="stack-card">
+
+                        <div class="stack-card-top">
+                            <span class="stack-index">04</span>
+                        </div>
+
+                        <h3>Dados & BI</h3>
+
+                        <p class="stack-card-description">
+                            Tratamento, preparação e visualização
+                            de dados para análise.
+                        </p>
+
+                        <div class="stack-tags">
+
+                            <span class="stack-tag">Power BI</span>
+                            <span class="stack-tag">Python</span>
+                            <span class="stack-tag">ETL</span>
+
+                        </div>
+
+                    </article>
+
+                    <article class="stack-card">
+
+                        <div class="stack-card-top">
+                            <span class="stack-index">05</span>
+                        </div>
+
+                        <h3>Automações & APIs</h3>
+
+                        <p class="stack-card-description">
+                            Integração entre serviços, comunicação
+                            entre aplicações e fluxos automatizados.
+                        </p>
+
+                        <div class="stack-tags">
+
+                            <span class="stack-tag">n8n</span>
+                            <span class="stack-tag">APIs REST</span>
+
+                        </div>
+
+                    </article>
+
+                    <article class="stack-card">
+
+                        <div class="stack-card-top">
+                            <span class="stack-index">06</span>
+                        </div>
+
+                        <h3>Cloud & infraestrutura</h3>
+
+                        <p class="stack-card-description">
+                            Ambientes, serviços em nuvem e execução
+                            de aplicações.
+                        </p>
+
+                        <div class="stack-tags">
+
+                            <span class="stack-tag">Azure</span>
+                            <span class="stack-tag">Docker</span>
+
+                        </div>
+
+                    </article>
+
+                    <article class="stack-card">
+
+                        <div class="stack-card-top">
+                            <span class="stack-index">07</span>
+                        </div>
+
+                        <h3>Ferramentas</h3>
+
+                        <p class="stack-card-description">
+                            Versionamento e organização
+                            do desenvolvimento dos projetos.
+                        </p>
+
+                        <div class="stack-tags">
+
+                            <span class="stack-tag">Git</span>
+                            <span class="stack-tag">GitHub</span>
+                            <span class="stack-tag">Visual Studio Code</span>
+
+                        </div>
+
+                    </article>
+
+
                 </div>
+
             </div>
+
         </section>
 
-          <section class="cv-section" id="cv">
+        <section class="cv-section" id="cv">
+
             <div class="cv-inner">
+
                 <div>
-                    <span class="eyebrow">/* próxima etapa */</span>
+
+                    <span class="eyebrow">
+                        /* próxima etapa */
+                    </span>
 
                     <h2>
                         QUER SABER MAIS
                         <br>
                         SOBRE <span>MIM?</span>
                     </h2>
+
                 </div>
 
-                <a href="{{ url_for('static', filename='assets/ALINNE_OLIVEIRA_CV.pdf') }}" target="_blank" class="button dark-button">
-    &gt;_ ABRIR CURRÍCULO
-</a>
+
+                <a
+                    href="{{ url_for('static', filename='assets/ALINNE_OLIVEIRA_CV.pdf') }}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="button dark-button">
+
+                    &gt;_ ABRIR CURRÍCULO
+
+                </a>
+
             </div>
+
         </section>
 
         <section class="section contact" id="contact">
+
             <div class="section-inner">
+
                 <div class="section-label">
+
                     <span>/* contato */</span>
                     <span>vamos conversar</span>
+
                 </div>
+
 
                 <h2>
                     <span>VAMOS CONVERSAR?</span>
                 </h2>
+
 
                 <p class="section-description">
                     Tem uma oportunidade, projeto ou simplesmente
@@ -408,67 +729,331 @@
                     Entre em contato comigo.
                 </p>
 
+
+
                 <div class="contact-grid">
                     <div class="contact-info">
+
                         <div class="social-links">
-                            <a href="mailto:alinnesoliveira13@gmail.com" class="contact-email">
-                            alinnesoliveira13@gmail.com </a>
-                           <a href="https://github.com/alinneoliveira-dev" target="_blank">https://github.com/alinneoliveira-dev</a>
-                           <a href="https://www.linkedin.com/in/alinne-oliveira" target="_blank">https://www.linkedin.com/in/alinne-oliveira</a>
+                            <a
+                                href="mailto:alinnesoliveira13@gmail.com"
+                                class="contact-card">
+
+                                <span class="contact-card-icon" aria-hidden="true">
+
+                                    <svg viewBox="0 0 24 24">
+
+                                        <rect
+                                            x="2.5"
+                                            y="4.5"
+                                            width="19"
+                                            height="15"
+                                            rx="2">
+                                        </rect>
+
+                                        <path d="m3 6 9 7 9-7"></path>
+
+                                    </svg>
+
+                                </span>
+
+                                <span class="contact-card-copy">
+
+                                    <span class="contact-card-label">
+                                        E-MAIL
+                                    </span>
+
+                                    <span class="contact-card-value">
+                                        alinnesoliveira13@gmail.com
+                                    </span>
+
+                                </span>
+
+                            </a>
+
+                            <a
+                                href="https://github.com/alinneoliveira-dev"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="contact-card">
+
+                                <span class="contact-card-icon" aria-hidden="true">
+
+                                    <svg viewBox="0 0 24 24">
+
+                                        <path
+                                            class="brand-fill"
+                                            d="M12 .9a11.1 11.1 0 0 0-3.51 21.63c.56.1.76-.24.76-.54v-2.1c-3.1.67-3.76-1.32-3.76-1.32-.5-1.28-1.23-1.62-1.23-1.62-1.01-.69.08-.68.08-.68 1.12.08 1.71 1.15 1.71 1.15 1 .1.76 2.07 3.18 1.57.1-.72.39-1.21.7-1.49-2.48-.28-5.09-1.24-5.09-5.52 0-1.22.44-2.22 1.15-3-.12-.28-.5-1.42.11-2.96 0 0 .94-.3 3.05 1.15a10.6 10.6 0 0 1 5.55 0c2.12-1.45 3.05-1.15 3.05-1.15.61 1.54.23 2.68.12 2.96.71.78 1.14 1.78 1.14 3 0 4.29-2.61 5.23-5.1 5.51.4.35.75 1.03.75 2.08v3.08c0 .3.2.65.77.54A11.1 11.1 0 0 0 12 .9Z">
+                                        </path>
+
+                                    </svg>
+
+                                </span>
+
+
+                                <span class="contact-card-copy">
+
+                                    <span class="contact-card-label">
+                                        GITHUB
+                                    </span>
+
+                                    <span class="contact-card-value">
+                                        github.com/alinneoliveira-dev
+                                    </span>
+
+                                </span>
+
+                            </a>
+                            <a
+                                href="https://www.linkedin.com/in/alinne-oliveira"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="contact-card">
+
+                                <span class="contact-card-icon" aria-hidden="true">
+
+                                    <svg viewBox="0 0 24 24">
+
+                                        <path
+                                            class="brand-fill"
+                                            d="M5.2 3.2a2.2 2.2 0 1 1-4.4 0 2.2 2.2 0 0 1 4.4 0ZM1.2 8h3.7v14H1.2V8Zm6.1 0h3.5v1.9h.1c.5-.9 1.7-2.2 3.6-2.2 3.9 0 4.6 2.5 4.6 5.8V22h-3.7v-7.5c0-1.8 0-4-2.4-4s-2.8 1.9-2.8 3.9V22H7.3V8Z">
+                                        </path>
+
+                                    </svg>
+
+                                </span>
+
+
+                                <span class="contact-card-copy">
+
+                                    <span class="contact-card-label">
+                                        LINKEDIN
+                                    </span>
+
+                                    <span class="contact-card-value">
+                                        linkedin.com/in/alinne-oliveira
+                                    </span>
+
+                                </span>
+
+                            </a>
+
+                            <a
+                                href="https://wa.me/5511993130498"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="contact-card"
+                                id="whatsappContactLink">
+
+                                <span class="contact-card-icon" aria-hidden="true">
+
+                                    <svg viewBox="0 0 24 24">
+
+                                        <path d="M20.2 11.7a8.2 8.2 0 0 1-12.1 7.2L3 20l1.2-4.9a8.2 8.2 0 1 1 16-3.4Z"></path>
+
+                                        <path d="M8.5 8.2c.3-.6.6-.6.9-.6h.5c.2 0 .4.1.5.4l.7 1.7c.1.2.1.4 0 .6l-.5.7c-.2.2-.2.4 0 .6.4.7 1 1.3 1.7 1.7.2.1.4.1.6-.1l.8-.9c.2-.2.4-.2.6-.1l1.6.8c.2.1.3.3.3.5 0 .4-.2 1.2-.7 1.6-.5.5-1.2.7-1.8.6-1.1-.2-2.4-.8-3.6-1.9-1.3-1.2-2.1-2.7-2.3-3.7-.2-.7.1-1.4.7-1.9Z"></path>
+
+                                    </svg>
+
+                                </span>
+
+
+                                <span class="contact-card-copy">
+
+                                    <span class="contact-card-label">
+                                        WHATSAPP
+                                    </span>
+
+                                    <span class="contact-card-value">
+                                        Conversar pelo WhatsApp
+                                    </span>
+
+                                </span>
+
+                            </a>
+
+
                         </div>
-                      </div>
+
+                    </div>
 
                     <form class="contact-form" id="contactForm">
-                        <div class="input-group">
-                            <label for="name">NOME</label>
-                            <input type="text" id="name" placeholder="" required>
+                        <div class="send-method">
+
+                            <span class="send-method-label">
+                                COMO DESEJA ENVIAR?
+                            </span>
+
+
+                            <div class="send-method-options">
+
+                                <button
+                                    type="button"
+                                    class="send-method-button active"
+                                    data-method="email"
+                                    aria-pressed="true">
+
+                                    <svg viewBox="0 0 24 24" aria-hidden="true">
+
+                                        <rect
+                                            x="2.5"
+                                            y="4.5"
+                                            width="19"
+                                            height="15"
+                                            rx="2">
+                                        </rect>
+
+                                        <path d="m3 6 9 7 9-7"></path>
+
+                                    </svg>
+
+                                    E-mail
+
+                                </button>
+
+                                <button
+                                    type="button"
+                                    class="send-method-button"
+                                    data-method="whatsapp"
+                                    aria-pressed="false">
+
+                                    <svg viewBox="0 0 24 24" aria-hidden="true">
+
+                                        <path d="M20.2 11.7a8.2 8.2 0 0 1-12.1 7.2L3 20l1.2-4.9a8.2 8.2 0 1 1 16-3.4Z"></path>
+
+                                        <path d="M8.5 8.2c.3-.6.6-.6.9-.6h.5c.2 0 .4.1.5.4l.7 1.7c.1.2.1.4 0 .6l-.5.7c-.2.2-.2.4 0 .6.4.7 1 1.3 1.7 1.7.2.1.4.1.6-.1l.8-.9c.2-.2.4-.2.6-.1l1.6.8c.2.1.3.3.3.5 0 .4-.2 1.2-.7 1.6-.5.5-1.2.7-1.8.6-1.1-.2-2.4-.8-3.6-1.9-1.3-1.2-2.1-2.7-2.3-3.7-.2-.7.1-1.4.7-1.9Z"></path>
+
+                                    </svg>
+
+                                    WhatsApp
+
+                                </button>
+
+                            </div>
+
                         </div>
 
                         <div class="input-group">
-                            <label for="email">EMAIL</label>
-                            <input type="email" id="email" placeholder="" required>
+
+                            <label for="name">
+                                NOME
+                            </label>
+
+                            <input
+                                type="text"
+                                id="name"
+                                name="name"
+                                placeholder="Seu nome"
+                                autocomplete="name"
+                                required>
+
                         </div>
 
                         <div class="input-group">
-                            <label for="message">MENSAGEM</label>
-                            <textarea id="message" rows="5" placeholder="Digite sua mensagem..." required></textarea>
+
+                            <label for="email">
+                                E-MAIL
+                            </label>
+
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                placeholder="seuemail@exemplo.com"
+                                autocomplete="email"
+                                required>
+
                         </div>
+
+                        <div class="input-group">
+
+                            <label for="subject">
+                                ASSUNTO
+                            </label>
+
+                            <input
+                                type="text"
+                                id="subject"
+                                name="subject"
+                                placeholder="Ex.: Projeto, oportunidade, parceria...">
+
+                        </div>
+
+                        <div class="input-group">
+
+                            <label for="message">
+                                MENSAGEM
+                            </label>
+
+                            <textarea
+                                id="message"
+                                name="message"
+                                rows="5"
+                                placeholder="Conte um pouco sobre o que deseja conversar..."
+                                required></textarea>
+
+                        </div>
+
+
+                        <p class="contact-hint">
+                            Ao escolher WhatsApp, você será direcionado
+                            para uma conversa com a mensagem já preenchida.
+                        </p>
 
                         <button type="submit" class="button primary">
-                            ENVIAR MENSAGEM →
+                            ENVIAR POR E-MAIL <span>→</span>
                         </button>
+
+
                     </form>
+
                 </div>
+
             </div>
+
         </section>
+
 
     </main>
 
     <div id="systemModal" class="system-modal">
-    <div class="system-modal-box">
-        <div class="system-modal-icon">✓</div>
 
-        <h3 id="systemModalTitle">Mensagem enviada!</h3>
+        <div class="system-modal-box">
 
-        <p id="systemModalMessage">
-            Obrigada pelo contato. Em breve entrarei em contato com você.
-        </p>
+            <div class="system-modal-icon">
+                ✓
+            </div>
 
-        <button id="systemModalClose" type="button">
-            FECHAR
-        </button>
+            <h3 id="systemModalTitle">
+                Mensagem enviada!
+            </h3>
+
+            <p id="systemModalMessage">
+                Obrigada pelo contato. Em breve entrarei em contato com você.
+            </p>
+
+            <button id="systemModalClose" type="button">
+                FECHAR
+            </button>
+
+        </div>
+
     </div>
-</div>
 
     <footer>
-        <div>ALINNE.DEV</div>
 
+        <div>
+            ALINNE.DEV
+        </div>
 
-        <button id="backTop">
+        <button id="backTop" aria-label="Voltar ao topo">
             &gt;_
         </button>
+
     </footer>
 
-    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <script src="{{ url_for('static', filename='script.js') }}?v=3"></script>
+
 </body>
+
 </html>

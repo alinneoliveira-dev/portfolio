@@ -1224,3 +1224,429 @@ footer > div:first-child {
         grid-template-columns: 1fr;
     }
 }
+
+
+
+/* =========================================================
+   CONTATO + STACK EM CARDS + BOTÃO DE TEMA
+   Identidade visual original: roxo/lilás
+   ========================================================= */
+
+/* Botão circular de tema */
+.circle-button {
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    color: var(--accent-light);
+    font-size: 0;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, .08);
+    transition: transform .25s ease, background .3s ease, border-color .3s ease;
+}
+
+.circle-button:hover {
+    transform: rotate(-10deg) translateY(-2px);
+    background: var(--panel);
+    color: var(--accent-light);
+    border-color: var(--accent-light);
+}
+
+.circle-button svg {
+    width: 21px;
+    height: 21px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+/* Contato */
+.contact-grid {
+    grid-template-columns: .9fr 1.1fr;
+    gap: 70px;
+    align-items: start;
+}
+
+.social-links {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px;
+    margin-top: 0;
+    align-items: stretch;
+}
+
+.contact-card {
+    min-height: 96px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 20px 22px;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    background: var(--panel);
+    transition: transform .25s ease, border-color .25s ease, background .3s ease, box-shadow .25s ease;
+}
+
+.contact-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--accent-light);
+    box-shadow: 0 10px 28px rgba(124, 58, 237, .10);
+}
+
+.contact-card-icon {
+    width: 42px;
+    min-width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent-light);
+}
+
+.contact-card-icon svg {
+    width: 34px;
+    height: 34px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.contact-card-icon .brand-fill {
+    fill: currentColor;
+    stroke: none;
+}
+
+.contact-card-copy {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.contact-card-label {
+    color: var(--text-secondary);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+}
+
+.contact-card-value {
+    color: var(--text);
+    font-family: "Chakra Petch", sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    overflow-wrap: anywhere;
+    transition: color .2s ease;
+}
+
+.contact-card:hover .contact-card-value {
+    color: var(--accent-light);
+}
+
+/* Formulário e seletor de canal */
+.contact-form {
+    padding: 28px;
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    background: var(--panel);
+    gap: 21px;
+}
+
+.send-method {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 3px;
+}
+
+.send-method-label {
+    color: var(--text-secondary);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+}
+
+.send-method-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.send-method-button {
+    min-height: 58px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 12px;
+    border: 1px solid var(--border);
+    border-radius: 13px;
+    background: var(--bg-secondary);
+    color: var(--text-secondary);
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: .25s ease;
+}
+
+.send-method-button svg {
+    width: 21px;
+    height: 21px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.send-method-button:hover {
+    border-color: var(--accent-light);
+    color: var(--accent-light);
+}
+
+.send-method-button.active {
+    border-color: var(--accent);
+    background: rgba(124, 58, 237, .12);
+    color: var(--accent-light);
+    box-shadow: 0 0 0 2px rgba(124, 58, 237, .10);
+}
+
+.contact-form .input-group input,
+.contact-form .input-group textarea {
+    min-height: 54px;
+    padding: 16px 18px;
+    border-radius: 12px;
+    font-size: 13px;
+    transition: border-color .2s ease, box-shadow .2s ease, background .3s ease;
+}
+
+.contact-form .input-group textarea {
+    min-height: 145px;
+    line-height: 1.7;
+}
+
+.contact-form .input-group input::placeholder,
+.contact-form .input-group textarea::placeholder {
+    color: var(--text-secondary);
+    opacity: .75;
+}
+
+.contact-form .button {
+    align-self: stretch;
+    min-height: 54px;
+    border-radius: 12px;
+}
+
+.contact-form .button span {
+    margin-left: 8px;
+}
+
+.contact-hint {
+    color: var(--text-secondary);
+    font-size: 10px;
+    line-height: 1.6;
+}
+
+/* Stack em cartões */
+.stack-list {
+    margin-top: 55px;
+    border: 0;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+}
+
+.stack-card {
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    padding: 28px;
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    background: var(--panel);
+    transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease, background .3s ease;
+}
+
+.stack-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-light);
+    box-shadow: 0 14px 35px rgba(124, 58, 237, .10);
+}
+
+.stack-card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.stack-index {
+    color: var(--accent-light);
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.stack-card h3 {
+    margin-bottom: 12px;
+    font-family: "Chakra Petch", sans-serif;
+    font-size: 24px;
+}
+
+.stack-card-description {
+    min-height: 66px;
+    margin-bottom: 22px;
+    color: var(--text-secondary);
+    font-family: "JetBrains Mono", monospace;
+    font-size: 12px;
+    line-height: 1.8;
+}
+
+.stack-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+}
+
+.stack-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 38px;
+    padding: 8px 11px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--bg-secondary);
+    color: var(--text);
+    font-size: 11px;
+    font-weight: 600;
+    transition: border-color .2s ease, color .2s ease, transform .2s ease;
+}
+
+.stack-tag:hover {
+    transform: translateY(-2px);
+    border-color: var(--accent-light);
+    color: var(--accent-light);
+}
+
+.stack-tag::before {
+    content: "";
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--accent-light);
+    box-shadow: 0 0 9px rgba(168, 85, 247, .45);
+}
+
+.stack-card-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    align-self: flex-start;
+    margin-top: auto;
+    padding: 8px 12px;
+    border-radius: 30px;
+    background: var(--bg-secondary);
+    color: var(--text-secondary);
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.stack-card-status::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 8px var(--accent-light);
+}
+
+/* Ajustes de tema: mantém contraste nos componentes novos */
+body.dark .contact-card,
+body.dark .contact-form,
+body.dark .stack-card {
+    background: var(--panel);
+}
+
+body:not(.dark) .contact-card,
+body:not(.dark) .contact-form,
+body:not(.dark) .stack-card {
+    background: rgba(255, 255, 255, .72);
+}
+
+/* Responsividade */
+@media (max-width: 900px) {
+    .stack-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 42px;
+    }
+}
+
+@media (max-width: 600px) {
+    .contact-form {
+        padding: 20px;
+    }
+
+    .contact-card {
+        min-height: 86px;
+        padding: 17px;
+        gap: 14px;
+    }
+
+    .contact-card-value {
+        font-size: 13px;
+    }
+
+    .send-method-options {
+        gap: 8px;
+    }
+
+    .send-method-button {
+        min-height: 54px;
+        font-size: 12px;
+    }
+
+    .stack-list {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        margin-top: 38px;
+    }
+
+    .stack-card {
+        min-height: 270px;
+        padding: 23px;
+    }
+
+    .stack-card-description {
+        min-height: auto;
+    }
+}
+
+
+/* Ocultar campos no modo WhatsApp */
+.contact-form .input-group[hidden] {
+    display: none !important;
+}
+
+/* Transição dos botões de envio */
+.send-method-button {
+    transition: all 0.25s ease;
+    cursor: pointer;
+}
+
+/* Destaque do método selecionado */
+.send-method-button.active {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.12);
+}

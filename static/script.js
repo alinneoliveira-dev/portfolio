@@ -1,343 +1,721 @@
-const menuToggle = document.getElementById("menuToggle");
-const navLinks = document.getElementById("navLinks");
 
-menuToggle.addEventListener("click", () => {
-    navLinks.classList.toggle("open");
-});
+document.addEventListener("DOMContentLoaded", () => {
 
-/* fecha o menu quando clicar em algum link */
+    const WHATSAPP_NUMBER = "5511993130498";
+    const body = document.body;
+    const menuToggle = document.getElementById("menuToggle");
+    const navLinks = document.getElementById("navLinks");
 
-document.querySelectorAll(".nav-links a").forEach(link => {
-    link.addEventListener("click", () => {
-        navLinks.classList.remove("open");
-    });
-});
+    if (menuToggle && navLinks) {
 
-/* tema escuro/claro */
+        menuToggle.addEventListener("click", () => {
 
-const themeToggle = document.getElementById("themeToggle");
-const savedTheme = localStorage.getItem("portfolio-theme");
+            menuToggle.classList.toggle("active");
+            navLinks.classList.toggle("active");
 
-if (savedTheme === "light") {
-    document.body.classList.remove("dark");
-} else {
-    document.body.classList.add("dark");
-}
-
-themeToggle.addEventListener("click", () => {
-    document.body.classList.toggle("dark");
-
-    const isDark = document.body.classList.contains("dark");
-
-    localStorage.setItem(
-        "portfolio-theme",
-        isDark ? "dark" : "light"
-    );
-});
-
-/* barra de progresso */
-
-const progress = document.getElementById("scrollProgress");
-
-window.addEventListener("scroll", () => {
-    const scrollTop = window.scrollY;
-
-    const documentHeight =
-        document.documentElement.scrollHeight -
-        window.innerHeight;
-
-    const percentage =
-        (scrollTop / documentHeight) * 100;
-
-    progress.style.width = `${percentage}%`;
-});
-
-/* navbar scroll */
-
-const navbar = document.getElementById("navbar");
-
-window.addEventListener("scroll", () => {
-    if (window.scrollY > 30) {
-        navbar.classList.add("scrolled");
-    } else {
-        navbar.classList.remove("scrolled");
-    }
-});
-
-/* filtro dos projetos */
-
-const filters = document.querySelectorAll(".filter");
-const projects = document.querySelectorAll(".project-card");
-
-filters.forEach(filter => {
-    filter.addEventListener("click", () => {
-        filters.forEach(button => {
-            button.classList.remove("active");
         });
 
-        filter.classList.add("active");
+        navLinks.querySelectorAll("a").forEach(link => {
 
-        const selected = filter.dataset.filter;
+            link.addEventListener("click", () => {
 
-        projects.forEach(project => {
-            const categories = project.dataset.category;
+                menuToggle.classList.remove("active");
+                navLinks.classList.remove("active");
 
-            if (
-                selected === "all" ||
-                categories.includes(selected)
-            ) {
-                project.classList.remove("hidden");
-            } else {
-                project.classList.add("hidden");
-            }
+            });
+
         });
-    });
-});
 
-/* scroll */
+    }
+    const themeToggle = document.getElementById("themeToggle");
+    const THEME_KEY = "portfolio-theme";
+    const moonIcon = `
+        <svg viewBox="0 0 24 24"
+             width="20"
+             height="20"
+             fill="currentColor"
+             aria-hidden="true">
+            <path d="M20.2 15.3A8.5 8.5 0 0 1 8.7 3.8
+            8.6 8.6 0 1 0 20.2 15.3Z"/>
+        </svg>
+    `;
 
-const revealElements = document.querySelectorAll(".reveal");
+    const sunIcon = `
+        <svg viewBox="0 0 24 24"
+             width="20"
+             height="20"
+             fill="none"
+             stroke="currentColor"
+             stroke-width="2"
+             stroke-linecap="round"
+             aria-hidden="true">
+            <circle cx="12" cy="12" r="4"/>
+            <path d="M12 2v2"/>
+            <path d="M12 20v2"/>
+            <path d="m4.93 4.93 1.42 1.42"/>
+            <path d="m17.65 17.65 1.42 1.42"/>
+            <path d="M2 12h2"/>
+            <path d="M20 12h2"/>
+            <path d="m4.93 19.07 1.42-1.42"/>
+            <path d="m17.65 6.35 1.42-1.42"/>
+        </svg>
+    `;
 
-const revealObserver = new IntersectionObserver(
-    entries => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add("visible");
-            }
+
+    function applyTheme(theme) {
+
+        const isDark = theme === "dark";
+
+        body.classList.toggle("dark", isDark);
+
+        if (themeToggle) {
+
+            themeToggle.innerHTML = isDark ? moonIcon : sunIcon;
+
+            themeToggle.setAttribute(
+                "aria-label",
+                isDark ? "Ativar tema claro" : "Ativar tema escuro"
+            );
+
+            themeToggle.setAttribute(
+                "title",
+                isDark ? "Modo escuro" : "Modo claro"
+            );
+
+        }
+
+        localStorage.setItem(THEME_KEY, theme);
+
+    }
+
+    const savedTheme = localStorage.getItem(THEME_KEY) || "dark";
+
+    applyTheme(savedTheme);
+
+
+    if (themeToggle) {
+
+        themeToggle.addEventListener("click", () => {
+
+            const isDark = body.classList.contains("dark");
+
+            applyTheme(isDark ? "light" : "dark");
+
         });
-    },
-    {
-        threshold: 0.15
+
     }
-);
 
-revealElements.forEach(element => {
-    revealObserver.observe(element);
-});
+    const navbar = document.getElementById("navbar");
 
-/* btn voltar ao topo*/
+    function updateNavbar() {
 
-const backTop = document.getElementById("backTop");
+        if (!navbar) return;
 
-backTop.addEventListener("click", () => {
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
+        navbar.classList.toggle("scrolled", window.scrollY > 50);
+
+    }
+
+    window.addEventListener("scroll", updateNavbar);
+
+    updateNavbar();
+
+    const scrollProgress = document.getElementById("scrollProgress");
+
+    function updateScrollProgress() {
+
+        if (!scrollProgress) return;
+
+        const scrollableHeight =
+            document.documentElement.scrollHeight - window.innerHeight;
+
+        if (scrollableHeight <= 0) {
+
+            scrollProgress.style.width = "0%";
+            return;
+
+        }
+
+        const progress =
+            (window.scrollY / scrollableHeight) * 100;
+
+        scrollProgress.style.width = `${progress}%`;
+
+    }
+
+    window.addEventListener("scroll", updateScrollProgress);
+
+    window.addEventListener("resize", updateScrollProgress);
+
+    updateScrollProgress();
+
+    const filterButtons = document.querySelectorAll(".filter");
+    const projectCards = document.querySelectorAll(".project-card");
+
+    filterButtons.forEach(button => {
+
+        button.addEventListener("click", () => {
+
+            const selectedFilter = button.dataset.filter;
+
+            filterButtons.forEach(item => {
+
+                item.classList.remove("active");
+
+            });
+
+            button.classList.add("active");
+
+
+            projectCards.forEach(card => {
+
+                const categories = (
+                    card.dataset.category || ""
+                ).split(" ");
+
+                const shouldShow =
+                    selectedFilter === "all" ||
+                    categories.includes(selectedFilter);
+
+                card.style.display = shouldShow ? "" : "none";
+
+            });
+
+        });
+
     });
-});
 
-/* modal do sistema */
+    const revealElements = document.querySelectorAll(".reveal");
 
-const systemModal = document.getElementById("systemModal");
-const systemModalTitle = document.getElementById("systemModalTitle");
-const systemModalMessage = document.getElementById("systemModalMessage");
-const systemModalClose = document.getElementById("systemModalClose");
+    if ("IntersectionObserver" in window) {
 
-function openSystemModal(title, message) {
-    systemModalTitle.textContent = title;
-    systemModalMessage.textContent = message;
+        const revealObserver = new IntersectionObserver(
+            (entries, observer) => {
 
-    systemModal.classList.add("active");
-}
+                entries.forEach(entry => {
 
-function closeSystemModal() {
-    systemModal.classList.remove("active");
-}
+                    if (entry.isIntersecting) {
 
-systemModalClose.addEventListener("click", closeSystemModal);
+                        entry.target.classList.add("active");
 
-systemModal.addEventListener("click", event => {
-    if (event.target === systemModal) {
-        closeSystemModal();
-    }
-});
+                        observer.unobserve(entry.target);
 
-/* forms */
+                    }
 
-const contactForm = document.getElementById("contactForm");
+                });
 
-contactForm.addEventListener("submit", async event => {
-    event.preventDefault();
-
-    const name = document.getElementById("name").value.trim();
-    const email = document.getElementById("email").value.trim();
-    const message = document.getElementById("message").value.trim();
-
-    if (!name || !email || !message) {
-        openSystemModal(
-            "Campos obrigatórios",
-            "Preencha todos os campos antes de enviar sua mensagem."
-        );
-        return;
-    }
-
-    try {
-        const response = await fetch("/api/contact", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
             },
-            body: JSON.stringify({
-                name: name,
-                email: email,
-                message: message
-            })
-        });
-
-        const data = await response.json();
-
-        if (data.success) {
-            openSystemModal(
-                "Mensagem enviada!",
-                "Obrigada pelo contato. Recebi sua mensagem e em breve entrarei em contato com você."
-            );
-
-            contactForm.reset();
-        } else {
-            openSystemModal(
-                "Não foi possível enviar",
-                data.message
-            );
-        }
-
-    } catch (error) {
-        console.error("Erro:", error);
-
-        openSystemModal(
-            "Algo deu errado",
-            "Não foi possível enviar sua mensagem. Tente novamente em alguns instantes."
-        );
-    }
-});
-
-/* particulas */
-
-const canvas = document.getElementById("particlesCanvas");
-const ctx = canvas.getContext("2d");
-
-let particles = [];
-
-function resizeCanvas() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-}
-
-resizeCanvas();
-
-window.addEventListener("resize", resizeCanvas);
-
-/* cria partículas */
-
-function createParticles() {
-    particles = [];
-
-    const amount =
-        window.innerWidth < 600
-            ? 25
-            : 55;
-
-    for (let i = 0; i < amount; i++) {
-        particles.push({
-            x: Math.random() * canvas.width,
-            y: Math.random() * canvas.height,
-            size: Math.random() * 1.8 + .5,
-            speed: Math.random() * .25 + .05,
-            opacity: Math.random() * .6 + .2
-        });
-    }
-}
-
-createParticles();
-
-/* anima partículas */
-
-function animateParticles() {
-    ctx.clearRect(
-        0,
-        0,
-        canvas.width,
-        canvas.height
-    );
-
-    particles.forEach(particle => {
-        particle.y -= particle.speed;
-
-        if (particle.y < 0) {
-            particle.y = canvas.height;
-        }
-
-        ctx.beginPath();
-
-        ctx.arc(
-            particle.x,
-            particle.y,
-            particle.size,
-            0,
-            Math.PI * 2
+            {
+                threshold: 0.12
+            }
         );
 
-        ctx.fillStyle =
-            `rgba(168, 85, 247, ${particle.opacity})`;
+        revealElements.forEach(element => {
 
-        ctx.fill();
+            revealObserver.observe(element);
+
+        });
+
+    } else {
+
+        revealElements.forEach(element => {
+
+            element.classList.add("active");
+
+        });
+
+    }
+
+    const backTop = document.getElementById("backTop");
+
+    if (backTop) {
+
+        backTop.addEventListener("click", () => {
+
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+
+        });
+
+    }
+    const canvas = document.getElementById("particlesCanvas");
+
+    if (canvas) {
+
+        const ctx = canvas.getContext("2d");
+
+        if (ctx) {
+
+            let particles = [];
+
+            let animationFrame;
+
+            let canvasWidth = 0;
+            let canvasHeight = 0;
+
+            const PARTICLE_COUNT = 45;
+
+            const accentColor = getComputedStyle(body)
+                .getPropertyValue("--accent-color")
+                .trim() || "#00d9ff";
+
+
+            function resizeCanvas() {
+
+                const pixelRatio = Math.min(
+                    window.devicePixelRatio || 1,
+                    2
+                );
+
+                canvasWidth = window.innerWidth;
+                canvasHeight = window.innerHeight;
+
+                canvas.width = canvasWidth * pixelRatio;
+                canvas.height = canvasHeight * pixelRatio;
+
+                canvas.style.width = `${canvasWidth}px`;
+                canvas.style.height = `${canvasHeight}px`;
+
+                ctx.setTransform(
+                    pixelRatio,
+                    0,
+                    0,
+                    pixelRatio,
+                    0,
+                    0
+                );
+
+            }
+
+
+            function createParticles() {
+
+                particles = [];
+
+                for (let i = 0; i < PARTICLE_COUNT; i++) {
+
+                    particles.push({
+
+                        x: Math.random() * canvasWidth,
+
+                        y: Math.random() * canvasHeight,
+
+                        size: Math.random() * 2 + 0.5,
+
+                        speedX: (Math.random() - 0.5) * 0.35,
+
+                        speedY: (Math.random() - 0.5) * 0.35,
+
+                        opacity: Math.random() * 0.4 + 0.1
+
+                    });
+
+                }
+
+            }
+
+
+            function animateParticles() {
+
+                ctx.clearRect(
+                    0,
+                    0,
+                    canvasWidth,
+                    canvasHeight
+                );
+
+                particles.forEach(particle => {
+
+                    particle.x += particle.speedX;
+                    particle.y += particle.speedY;
+
+                    if (particle.x < 0) particle.x = canvasWidth;
+
+                    if (particle.x > canvasWidth) particle.x = 0;
+
+                    if (particle.y < 0) particle.y = canvasHeight;
+
+                    if (particle.y > canvasHeight) particle.y = 0;
+
+
+                    ctx.beginPath();
+
+                    ctx.arc(
+                        particle.x,
+                        particle.y,
+                        particle.size,
+                        0,
+                        Math.PI * 2
+                    );
+
+                    ctx.fillStyle = accentColor;
+
+                    ctx.globalAlpha = particle.opacity;
+
+                    ctx.fill();
+
+                });
+
+                ctx.globalAlpha = 1;
+
+                animationFrame = requestAnimationFrame(
+                    animateParticles
+                );
+
+            }
+
+
+            resizeCanvas();
+
+            createParticles();
+
+            animateParticles();
+
+
+            window.addEventListener("resize", () => {
+
+                resizeCanvas();
+
+                createParticles();
+
+            });
+
+        }
+
+    }
+
+
+    const systemModal = document.getElementById("systemModal");
+    const systemModalTitle = document.getElementById("systemModalTitle");
+    const systemModalMessage = document.getElementById("systemModalMessage");
+    const systemModalClose = document.getElementById("systemModalClose");
+
+    function openSystemModal(title, message) {
+
+        if (!systemModal) return;
+
+        if (systemModalTitle) {
+
+            systemModalTitle.textContent = title;
+
+        }
+
+        if (systemModalMessage) {
+
+            systemModalMessage.textContent = message;
+
+        }
+
+        systemModal.classList.add("active");
+
+    }
+
+    function closeSystemModal() {
+
+        if (!systemModal) return;
+
+        systemModal.classList.remove("active");
+
+    }
+
+
+    if (systemModalClose) {
+
+        systemModalClose.addEventListener(
+            "click",
+            closeSystemModal
+        );
+
+    }
+
+
+    if (systemModal) {
+
+        systemModal.addEventListener("click", event => {
+
+            if (event.target === systemModal) {
+
+                closeSystemModal();
+
+            }
+
+        });
+
+    }
+
+
+    document.addEventListener("keydown", event => {
+
+        if (event.key === "Escape") {
+
+            closeSystemModal();
+
+        }
+
     });
 
-    requestAnimationFrame(animateParticles);
-}
+    const contactForm = document.getElementById("contactForm");
+    const sendMethodButtons = document.querySelectorAll(
+        ".send-method-button"
+    );
 
-animateParticles();
+    const nameInput = document.getElementById("name");
+    const emailInput = document.getElementById("email");
+    const subjectInput = document.getElementById("subject");
+    const messageInput = document.getElementById("message");
+    const submitButton = contactForm?.querySelector(
+        'button[type="submit"]'
+    );
 
-/* efeito de descriptografia do título */
+    let currentSendMethod = "email";
 
-const decryptLines = document.querySelectorAll(".decrypt-line");
+    const nameGroup = nameInput?.closest(".input-group");
+    const emailGroup = emailInput?.closest(".input-group");
+    const subjectGroup = subjectInput?.closest(".input-group");
+    const contactHint = contactForm?.querySelector(".contact-hint");
 
-const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#$%&@";
+    function updateSendMethod(method) {
 
-function decryptText(element, finalText, duration = 1000) {
-    const intervalTime = 35;
-    const totalFrames = Math.ceil(duration / intervalTime);
+        currentSendMethod = method;
 
-    let frame = 0;
+        const isWhatsApp = method === "whatsapp";
 
-    const animation = setInterval(() => {
-        const progress = frame / totalFrames;
-        const revealed = Math.floor(progress * finalText.length);
+        sendMethodButtons.forEach(button => {
 
-        let result = "";
+            const isActive = button.dataset.method === method;
 
-        for (let i = 0; i < finalText.length; i++) {
+            button.classList.toggle("active", isActive);
 
-            if (finalText[i] === " ") {
-                result += " ";
-            } else if (i < revealed) {
-                result += finalText[i];
-            } else {
-                result += characters[
-                    Math.floor(Math.random() * characters.length)
-                ];
+            button.setAttribute(
+                "aria-pressed",
+                String(isActive)
+            );
+
+        });
+
+        if (nameGroup) {
+
+            nameGroup.hidden = isWhatsApp;
+
+        }
+
+        if (emailGroup) {
+
+            emailGroup.hidden = isWhatsApp;
+
+        }
+
+        if (subjectGroup) {
+
+            subjectGroup.hidden = isWhatsApp;
+
+        }
+
+        if (nameInput) {
+
+            nameInput.required = !isWhatsApp;
+
+        }
+
+        if (emailInput) {
+
+            emailInput.required = !isWhatsApp;
+
+        }
+
+        if (contactHint) {
+
+            contactHint.hidden = !isWhatsApp;
+
+        }
+
+        if (submitButton) {
+
+            submitButton.innerHTML = isWhatsApp
+                ? 'ENVIAR PELO WHATSAPP <span>→</span>'
+                : 'ENVIAR POR E-MAIL <span>→</span>';
+
+        }
+
+    }
+
+    sendMethodButtons.forEach(button => {
+
+        button.addEventListener("click", () => {
+
+            updateSendMethod(button.dataset.method);
+
+        });
+
+    });
+
+    updateSendMethod("email");
+
+    if (contactForm) {
+
+        contactForm.addEventListener("submit", async event => {
+
+            event.preventDefault();
+
+            const name = nameInput?.value.trim() || "";
+            const email = emailInput?.value.trim() || "";
+            const subject = subjectInput?.value.trim() || "";
+            const message = messageInput?.value.trim() || "";
+
+            if (!message) {
+
+                messageInput?.focus();
+
+                return;
+
             }
-        }
 
-        element.textContent = result;
+            if (currentSendMethod === "whatsapp") {
 
-        frame++;
+                if (
+                    !WHATSAPP_NUMBER ||
+                    WHATSAPP_NUMBER === "55DDDNUMERO" ||
+                    !/^\d+$/.test(WHATSAPP_NUMBER)
+                ) {
 
-        if (frame > totalFrames) {
-            clearInterval(animation);
-            element.textContent = finalText;
-        }
+                    openSystemModal(
+                        "Número não configurado",
+                        "Configure seu número de WhatsApp no arquivo script.js."
+                    );
 
-    }, intervalTime);
-}
+                    return;
 
-decryptLines.forEach((line, index) => {
+                }
 
-    setTimeout(() => {
-        decryptText(
-            line,
-            line.textContent.trim(),
-            1000
-        );
-    }, index * 180);
+
+                const whatsappMessage = encodeURIComponent(message);
+
+                const whatsappURL =
+                    `https://wa.me/${WHATSAPP_NUMBER}?text=${whatsappMessage}`;
+
+
+                window.open(
+                    whatsappURL,
+                    "_blank",
+                    "noopener,noreferrer"
+                );
+
+                return;
+
+            }
+
+
+            if (!name || !email) {
+
+                openSystemModal(
+                    "Campos obrigatórios",
+                    "Preencha seu nome e e-mail para continuar."
+                );
+
+                return;
+
+            }
+
+            if (!emailInput.checkValidity()) {
+
+                emailInput.reportValidity();
+
+                return;
+
+            }
+
+
+            const originalButtonText = submitButton.innerHTML;
+
+
+            try {
+
+                submitButton.disabled = true;
+
+                submitButton.textContent = "ENVIANDO...";
+
+
+                const response = await fetch("/api/contact", {
+
+                    method: "POST",
+
+                    headers: {
+
+                        "Content-Type": "application/json"
+
+                    },
+
+                    body: JSON.stringify({
+
+                        name: name,
+
+                        email: email,
+
+                        subject: subject,
+
+                        message: message
+
+                    })
+
+                });
+
+
+                const data = await response.json();
+
+
+                if (!response.ok) {
+
+                    throw new Error(
+                        data.error ||
+                        data.message ||
+                        "Não foi possível enviar sua mensagem."
+                    );
+
+                }
+
+
+                contactForm.reset();
+
+
+                updateSendMethod("email");
+
+
+                openSystemModal(
+                    "Mensagem enviada!",
+                    "Obrigada pelo contato! Em breve entrarei em contato com você."
+                );
+
+
+            } catch (error) {
+
+                console.error(
+                    "Erro ao enviar mensagem:",
+                    error
+                );
+
+
+                openSystemModal(
+                    "Ops! Algo deu errado.",
+                    error.message ||
+                    "Não foi possível enviar sua mensagem. Tente novamente."
+                );
+
+
+            } finally {
+
+                submitButton.disabled = false;
+
+                submitButton.innerHTML = originalButtonText;
+
+                updateSendMethod(currentSendMethod);
+
+            }
+
+        });
+
+    }
+
+    console.log("ALINNE.DEV inicializado com sucesso!");
 
 });
