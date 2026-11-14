@@ -8,35 +8,36 @@ document.addEventListener("DOMContentLoaded", () => {
     const menuToggle = document.getElementById("menuToggle");
     const navLinks = document.getElementById("navLinks");
 
-    if (menuToggle && navLinks) {
 
-        menuToggle.addEventListener("click", () => {
+if (menuToggle && navLinks) {
 
-            const isOpen = menuToggle.classList.toggle("active");
+    menuToggle.addEventListener("click", () => {
 
-            navLinks.classList.toggle("active", isOpen);
+        const isOpen = navLinks.classList.toggle("open");
 
-            menuToggle.setAttribute(
-                "aria-expanded",
-                String(isOpen)
-            );
+        menuToggle.classList.toggle("active", isOpen);
+
+        menuToggle.setAttribute(
+            "aria-expanded",
+            String(isOpen)
+        );
+
+    });
+
+    navLinks.querySelectorAll("a").forEach(link => {
+
+        link.addEventListener("click", () => {
+
+            menuToggle.classList.remove("active");
+            navLinks.classList.remove("open");
+
+            menuToggle.setAttribute("aria-expanded", "false");
 
         });
 
-        navLinks.querySelectorAll("a").forEach(link => {
+    });
 
-            link.addEventListener("click", () => {
-
-                menuToggle.classList.remove("active");
-                navLinks.classList.remove("active");
-
-                menuToggle.setAttribute("aria-expanded", "false");
-
-            });
-
-        });
-
-    }
+}
 
     const themeToggle = document.getElementById("themeToggle");
 
