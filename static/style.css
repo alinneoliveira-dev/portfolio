@@ -1995,3 +1995,294 @@ body:not(.dark) .stack-card {
 .input-group[hidden] {
     display: none !important;
 }
+
+/* =====================================================
+   PROJETOS — CARROSSEL COM PREVIEW VISÍVEL
+   Mantém a identidade visual do ALINNE.DEV
+===================================================== */
+.projects {
+    background: var(--bg-secondary);
+    color: var(--text);
+}
+
+.projects .section-label,
+.projects .section-description {
+    color: var(--text-secondary);
+}
+
+.projects h2 span {
+    color: var(--accent-light);
+}
+
+.filter-container {
+    margin: 38px 0 28px;
+}
+
+.filter {
+    color: var(--text);
+    border-color: var(--border);
+}
+
+.filter.active,
+.filter:hover {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+}
+
+.projects-carousel {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.projects-grid {
+    width: 100%;
+    min-width: 0;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.project-card,
+.project-card:hover {
+    min-width: 0;
+    min-height: 0;
+    padding: 0;
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+    isolation: auto;
+    color: var(--text);
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    transform: none;
+    box-shadow: none;
+}
+
+.project-card.is-visible {
+    display: flex;
+    animation: projectCardIn .28s ease both;
+}
+
+.project-card::before,
+.project-card::after,
+.project-card:hover::before,
+.project-card:hover::after {
+    display: none;
+    content: none;
+}
+
+.project-card:hover {
+    border-color: var(--accent-light);
+    transform: translateY(-4px);
+}
+
+.project-preview {
+    width: 100%;
+    height: 225px;
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+}
+
+.project-preview img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    filter: none;
+    box-shadow: none;
+    transition: transform .3s ease;
+}
+
+.project-card:hover .project-preview img {
+    transform: scale(1.025);
+}
+
+.project-content {
+    min-height: 310px;
+    padding: 22px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.project-header {
+    margin-bottom: 18px;
+}
+
+.project-number {
+    color: var(--accent-light);
+    font-weight: 700;
+}
+
+.project-type {
+    background: color-mix(in srgb, var(--accent) 13%, transparent);
+    color: var(--accent-light);
+    border: 1px solid color-mix(in srgb, var(--accent) 25%, transparent);
+    border-radius: 5px;
+    padding: 6px 9px;
+}
+
+.project-card h3,
+.project-card:hover h3 {
+    margin-bottom: 10px;
+    color: var(--text);
+    font-size: clamp(19px, 1.55vw, 25px);
+    line-height: 1.2;
+}
+
+.project-tech,
+.project-card:hover .project-tech {
+    margin-bottom: 16px;
+    color: var(--accent-light);
+    opacity: 1;
+    font-size: 10px;
+    line-height: 1.7;
+}
+
+.project-card p,
+.project-card:hover p {
+    color: var(--text-secondary);
+    opacity: 1;
+    font-size: 11px;
+    line-height: 1.8;
+}
+
+.project-footer,
+.project-card:hover .project-footer {
+    margin-top: auto;
+    padding-top: 22px;
+    color: var(--text-secondary);
+    gap: 12px;
+}
+
+.project-links {
+    flex-wrap: wrap;
+    gap: 14px;
+}
+
+.project-footer a {
+    color: var(--accent-light);
+    text-decoration: none;
+    transition: color .2s ease;
+}
+
+.project-footer a:hover {
+    color: var(--accent);
+}
+
+.project-footer > span {
+    font-size: 9px;
+    text-align: right;
+}
+
+.projects-arrow {
+    flex: 0 0 42px;
+    width: 42px;
+    height: 42px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    background: var(--panel);
+    color: var(--text);
+    font-size: 21px;
+    cursor: pointer;
+    transition: .2s ease;
+}
+
+.projects-arrow:hover:not(:disabled) {
+    color: #fff;
+    background: var(--accent);
+    border-color: var(--accent);
+    transform: translateY(-2px);
+}
+
+.projects-arrow:disabled {
+    opacity: .3;
+    cursor: not-allowed;
+}
+
+.projects-pagination {
+    max-width: 180px;
+    margin: 24px auto 0;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--text-secondary);
+    font-size: 10px;
+    letter-spacing: 1px;
+}
+
+.projects-pagination-line {
+    height: 2px;
+    flex: 1;
+    overflow: hidden;
+    background: var(--border);
+}
+
+.projects-pagination-line span {
+    display: block;
+    width: 50%;
+    height: 100%;
+    background: var(--accent-light);
+    transition: width .25s ease;
+}
+
+.project-card.hidden {
+    display: none !important;
+}
+
+@keyframes projectCardIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 1000px) {
+    .projects-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .project-content {
+        min-height: 300px;
+    }
+}
+
+@media (max-width: 600px) {
+    .projects-carousel {
+        gap: 8px;
+        padding-bottom: 4px;
+    }
+    .projects-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+    .projects-arrow {
+        flex-basis: 34px;
+        width: 34px;
+        height: 34px;
+        font-size: 18px;
+    }
+    .project-preview {
+        height: 220px;
+    }
+    .project-content {
+        min-height: 0;
+        padding: 20px;
+    }
+    .project-card h3,
+    .project-card:hover h3 {
+        font-size: 23px;
+    }
+    .projects-pagination {
+        margin-top: 18px;
+    }
+}

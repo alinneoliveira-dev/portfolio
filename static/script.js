@@ -152,37 +152,88 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     const filterButtons = document.querySelectorAll(".filter");
-    const projectCards = document.querySelectorAll(".project-card");
+    const projectCards = Array.from(document.querySelectorAll(".project-card"));
+    const projectsPrev = document.getElementById("projectsPrev");
+    const projectsNext = document.getElementById("projectsNext");
+    const projectsPage = document.getElementById("projectsPage");
+    const projectsProgress = document.getElementById("projectsProgress");
+
+    let currentProjectPage = 0;
+
+    function projectsPerPage() {
+        if (window.innerWidth <= 600) return 1;
+        if (window.innerWidth <= 1000) return 2;
+        return 3;
+    }
+
+    function filteredProjectCards() {
+        return projectCards.filter(card => !card.classList.contains("hidden"));
+    }
+
+    function renderProjects() {
+        const visibleCards = filteredProjectCards();
+        const perPage = projectsPerPage();
+        const pageCount = Math.max(1, Math.ceil(visibleCards.length / perPage));
+
+        currentProjectPage = Math.min(currentProjectPage, pageCount - 1);
+
+        projectCards.forEach(card => card.classList.remove("is-visible"));
+
+        const firstIndex = currentProjectPage * perPage;
+        visibleCards.slice(firstIndex, firstIndex + perPage).forEach(card => {
+            card.classList.add("is-visible");
+        });
+
+        if (projectsPrev) projectsPrev.disabled = currentProjectPage === 0;
+        if (projectsNext) projectsNext.disabled = currentProjectPage >= pageCount - 1;
+
+        if (projectsPage) {
+            projectsPage.textContent =
+                `${String(currentProjectPage + 1).padStart(2, "0")} / ${String(pageCount).padStart(2, "0")}`;
+        }
+
+        if (projectsProgress) {
+            projectsProgress.style.width = `${((currentProjectPage + 1) / pageCount) * 100}%`;
+        }
+    }
 
     filterButtons.forEach(button => {
-
         button.addEventListener("click", () => {
-
             const selectedFilter = button.dataset.filter;
 
-            filterButtons.forEach(item => {
-                item.classList.remove("active");
-            });
-
+            filterButtons.forEach(item => item.classList.remove("active"));
             button.classList.add("active");
 
             projectCards.forEach(card => {
-
-                const categories = (
-                    card.dataset.category || ""
-                ).split(/\s+/);
-
+                const categories = (card.dataset.category || "").split(/\s+/);
                 const shouldShow =
                     selectedFilter === "all" ||
                     categories.includes(selectedFilter);
 
                 card.classList.toggle("hidden", !shouldShow);
-
             });
 
+            currentProjectPage = 0;
+            renderProjects();
         });
-
     });
+
+    if (projectsPrev) {
+        projectsPrev.addEventListener("click", () => {
+            currentProjectPage = Math.max(0, currentProjectPage - 1);
+            renderProjects();
+        });
+    }
+
+    if (projectsNext) {
+        projectsNext.addEventListener("click", () => {
+            currentProjectPage += 1;
+            renderProjects();
+        });
+    }
+
+    window.addEventListener("resize", renderProjects);
+    renderProjects();
 
     const revealElements = document.querySelectorAll(".reveal");
 
@@ -465,7 +516,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
             });
 
-            // Nome, e-mail e assunto são exclusivos do e-mail.
             if (nameGroup) nameGroup.hidden = !isEmail;
             if (emailGroup) emailGroup.hidden = !isEmail;
             if (subjectGroup) subjectGroup.hidden = !isEmail;
