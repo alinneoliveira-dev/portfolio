@@ -1631,19 +1631,13 @@ body:not(.dark) .stack-card {
     }
 }
 
-
-/* =====================================================
-   RESPONSIVIDADE MOBILE — ALINNE.DEV
-   Ajustes complementares sem alterar o desktop
-===================================================== */
-
 @media (max-width: 600px) {
 
     /* NAVBAR */
     .navbar {
         padding: 13px 18px;
         display: flex;
-        flex-wrap: nowrap;
+        flex-wrap: wrap;
         justify-content: space-between;
         gap: 12px;
     }
